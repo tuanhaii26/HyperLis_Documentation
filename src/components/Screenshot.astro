@@ -10,15 +10,29 @@ const {
   src = '/images/hyperlis/placeholder.png',
   alt,
 } = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL.slice(0, -1)
+  : import.meta.env.BASE_URL;
+
+function resolveSrc(imgSrc: string) {
+  if (!imgSrc) return `${baseUrl}/images/hyperlis/placeholder.png`;
+  if (imgSrc.startsWith('http://') || imgSrc.startsWith('https://')) return imgSrc;
+  if (imgSrc.startsWith(baseUrl)) return imgSrc;
+  return `${baseUrl}${imgSrc.startsWith('/') ? imgSrc : `/${imgSrc}`}`;
+}
+
+const finalSrc = resolveSrc(src);
+const placeholderSrc = `${baseUrl}/images/hyperlis/placeholder.png`;
 ---
 
 <figure class="hl-screenshot-wrapper">
   <img 
-    src={src} 
+    src={finalSrc} 
     alt={alt} 
     loading="lazy" 
     class="hl-screenshot-img"
-    onerror="if (this.src !== '/images/hyperlis/placeholder.png') { this.src = '/images/hyperlis/placeholder.png'; }"
+    onerror={`if (this.src !== '${placeholderSrc}') { this.src = '${placeholderSrc}'; }`}
   />
 </figure>
 
