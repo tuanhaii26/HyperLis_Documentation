@@ -193,5 +193,5 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://tuanhaii26.github.io', // Thay bằng domain github của bạn
-  base: '/<ten-repo-cua-ban>',          // Tên repository trên GitHub (ví dụ: '/my-astro-web')
+  base: '/HyperLis_Documentation',          // Tên repository trên GitHub (ví dụ: '/my-astro-web')
 });
