@@ -5,8 +5,7 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
 	  site: 'https://tuanhaii26.github.io', // Thay bằng domain github của bạn
-  base: '/HyperLis_Documentation',          // Tên repository trên GitHub (ví dụ: '/my-astro-web')
-	site: 'https://hyperlis.docs.local',
+  base: '/HyperLis_Documentation',          // Tên repository trên GitHub (ví dụ: '/my-astro-web'),
 	integrations: [
 		starlight({
 			title: 'HyperLis Docs',
