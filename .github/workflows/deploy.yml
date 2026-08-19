@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ] # Đổi thành master nếu bạn dùng nhánh master
+    branches: [ main, master ]
   workflow_dispatch:
 
 permissions:
