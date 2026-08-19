@@ -1,0 +1,62 @@
+---
+title: Quản lý Ứng dụng Khởi chạy (Startup Apps)
+description: Kiểm soát các ứng dụng tự khởi động cùng Windows, sao lưu và khôi phục cấu hình khởi động an toàn.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/startup-apps/startup-apps-01.png" 
+  alt="Giao diện tab Khởi chạy (Startup Apps)"
+/>
+
+## 2. Tổng quan về phân hệ
+
+Tab **Khởi chạy (Startup Apps)** là công cụ đắc lực giúp bạn kiểm soát hoàn toàn các ứng dụng tự động chạy ngay khi máy tính vừa khởi động. Việc tinh chỉnh mục này là cách nhanh nhất để rút ngắn thời gian từ lúc nhấn nút nguồn đến khi máy tính sẵn sàng sử dụng.
+
+---
+
+## 3. Danh sách mục khởi động (Choose startup items)
+
+Giao diện liệt kê chi tiết các tiến trình đang *"xếp hàng"* khởi động cùng Windows:
+* **Name:** Tên của ứng dụng hoặc tiến trình (Ví dụ: *Zalo, Steam, SecurityHealth, EpicGames*...).
+* **Location:** Đường dẫn chính xác đến tệp thực thi (`.exe`) trên ổ cứng. Đây là thông tin cực kỳ hữu ích để xác định nguồn gốc của ứng dụng.
+
+---
+
+## 4. Các thao tác quản lý
+
+* **Refresh (Làm mới):** Quét lại hệ thống để cập nhật danh sách các ứng dụng vừa được thêm vào mục khởi động (thường xảy ra sau khi bạn vừa cài đặt phần mềm mới).
+* **Delete (Xóa):** Loại bỏ ứng dụng đã chọn khỏi danh sách khởi động. Thao tác này **không gỡ cài đặt ứng dụng**, chỉ ngăn không cho nó tự động chạy khi mở máy.
+* **Backup (Sao lưu):** Cho phép bạn lưu lại danh sách cấu hình khởi động hiện tại. Giúp bạn yên tâm thử nghiệm, nếu lỡ xóa nhầm mục quan trọng thì có thể khôi phục lại dễ dàng.
+* **Restore (Khôi phục):** Hoàn tác danh sách khởi động về trạng thái đã sao lưu trước đó.
+
+---
+
+## 5. Lợi ích thực tế cho từng đối tượng
+
+* **Đối với Gamer:** Ngăn chặn các nền tảng như *Steam, Epic Games, Discord* tự chạy ngầm khi bạn chỉ muốn mở máy làm việc, giúp tiết kiệm RAM và CPU cho trải nghiệm mượt mà nhất.
+* **Đối với IT Support & Helpdesk:**
+  * **Phát hiện mã độc / Phần mềm lạ:** Bằng cách kiểm tra cột *Location*, bạn có thể dễ dàng nhận diện các tiến trình có đường dẫn bất thường (thường là virus hoặc adware ẩn mình).
+  * **Tối ưu hóa máy khách hàng:** Đây là bước đầu tiên và hiệu quả nhất khi khách hàng phàn nàn về việc máy khởi động quá lâu.
+  * **An toàn khi xử lý:** Tính năng *Backup* cho phép dọn dẹp mạnh tay mà vẫn có đường lui nếu hệ thống cần một tiến trình đặc thù nào đó.
+* **Đối với Người dùng thông thường:** Loại bỏ các cửa sổ thông báo khó chịu tự nhảy lên ngay khi vừa vào màn hình Desktop; tăng tốc độ phản hồi của máy trong những phút đầu tiên sau khi mở máy.
+
+---
+
+## 6. Hướng dẫn sử dụng
+
+<Steps>
+1. Mở HyperLis, chuyển đến tab **Khởi chạy (Startup Apps)**.
+2. Nhấn nút **Backup** để lưu lại cấu hình khởi động hiện tại phòng ngừa sự cố.
+3. Tích chọn các ứng dụng không cần thiết tự chạy cùng máy (ví dụ: trình duyệt, app chat, phần mềm tự cập nhật).
+4. Nhấn nút **Delete** để tắt khởi động ngầm.
+5. Nhấn nút **"Restart to apply changes"** ở góc trên bên phải để hoàn tất.
+</Steps>
+
+<Aside type="tip">
+**Lời khuyên từ HyperLis:** Bạn nên giữ lại các tiến trình liên quan đến hệ điều hành và bảo mật như `SecurityHealth` (Windows Security) để đảm bảo máy tính luôn được bảo vệ. Hãy mạnh tay xóa các ứng dụng nhắn tin, trình duyệt hoặc các công cụ tự cập nhật (*Update Checkers*) để thấy sự khác biệt rõ rệt về tốc độ khởi động!
+</Aside>

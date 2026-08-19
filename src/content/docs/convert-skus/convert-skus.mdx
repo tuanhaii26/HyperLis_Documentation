@@ -1,0 +1,61 @@
+---
+title: Chuyển đổi Phiên bản Windows (Convert SKUs)
+description: Chuyển đổi trực tiếp phiên bản Windows (Home lên Pro, Enterprise, LTSC) ngay trên hệ điều hành mà không cần cài lại máy.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/convert-skus/convert-skus-01.png" 
+  alt="Giao diện tab Đổi phiên bản (Convert SKUs)"
+/>
+
+## 2. Tổng quan về phân hệ
+
+Tính năng **Convert SKUs (Đổi phiên bản)** được thiết kế để chuyển đổi nhanh phiên bản Windows (*Edition/SKU*) ngay trên hệ điều hành hiện tại mà **hoàn toàn không cần cài lại Windows**. 
+
+Công cụ đặc biệt phù hợp khi bạn cần nâng cấp từ Windows Home lên Pro để mở khóa Remote Desktop/BitLocker, hoặc chuyển sang bản Enterprise / IoT LTSC để tối ưu hóa hiệu năng chuyên biệt.
+
+---
+
+## 3. Cơ chế hoạt động của Convert SKUs trong HyperLis
+
+HyperLis sẽ tự động đọc thông tin hệ điều hành hiện tại (phiên bản, build, kiến trúc, trạng thái kích hoạt, kênh license). Khi người dùng nhấn thực hiện, công cụ chạy theo chuỗi tự động:
+
+1. Kiểm tra tính toàn vẹn của gói SKU tương ứng trong thư mục `Tools\SKUs`.
+2. Cấp quyền thư mục hệ thống phục vụ chuyển đổi license token.
+3. Sao chép bộ SKU vào thư mục `spp\tokens\skus` của Windows.
+4. Chạy các lệnh `slmgr` và `clipup` để nạp Product Key theo Edition đích, làm mới license token và áp dụng cấu hình mới.
+5. Hoàn tất và yêu cầu khởi động lại máy tính để hệ điều hành áp dụng đầy đủ.
+
+---
+
+## 4. Hướng dẫn từng bước sử dụng Convert SKUs
+
+<Steps>
+1. Mở HyperLis, chọn tab **Đổi phiên bản (Convert SKUs)**.
+2. Kiểm tra khu vực **Current Windows Info** để xác nhận bản Windows hiện tại, trạng thái *Activated* và *License Channel*.
+3. Ở mục **Choose Windows Version**, chọn đúng nhánh đích (*Windows 10, Windows 11, hoặc nhánh LTS/LTSC*).
+4. Ở mục **Choose Target Edition**, chọn phiên bản bạn muốn chuyển sang (Ví dụ: *Pro, Enterprise, IoT Enterprise*).
+5. Kiểm tra lại phần **Conversion Preview** và **Overview** để chắc chắn thông tin *Current → Target* là chính xác.
+6. *(Khuyến nghị)* Bấm nút **Details** để kiểm tra nhanh tính sẵn sàng của gói SKU trong hệ thống.
+7. Bấm nút **Convert Now**, đọc hộp thoại xác nhận và chọn **Agree** để bắt đầu.
+8. Theo dõi tiến trình trong mục **Processing** và **Logs** (tuyệt đối không đóng ứng dụng trong lúc công cụ đang chạy).
+9. Khi hệ thống báo *Successfully Completed*, bấm **Restart Now** (hoặc tự khởi động lại sau đó) để hoàn tất chuyển đổi.
+</Steps>
+
+---
+
+## 5. Giá trị thực tế & Lưu ý quan trọng
+
+* **Đối với IT Support & Helpdesk:** Chuyển đổi Edition nhanh chóng ngay tại máy khách hàng, tiết kiệm nhiều giờ cài lại Windows khi khách có nhu cầu nâng cấp bản quyền.
+* **Đối với Gamer & Người dùng nâng cao:** Dễ dàng chuyển sang các bản LTSC/IoT phù hợp với nhu cầu tối ưu mà vẫn giữ nguyên 100% dữ liệu, phần mềm và cấu hình cá nhân.
+
+<Aside type="caution">
+* **Quyền Administrator:** Bắt buộc chạy HyperLis bằng quyền Administrator để phần mềm thao tác với dịch vụ token bản quyền của Windows.
+* **Khởi động lại:** Khởi động lại máy tính là bước bắt buộc để hệ thống cập nhật trọn vẹn Edition mới.
+* **Kích hoạt lại:** Sau khi chuyển đổi SKU, nếu trạng thái bản quyền thay đổi, hãy kích hoạt lại bằng key hoặc hình thức license hợp lệ của Edition mới.
+</Aside>

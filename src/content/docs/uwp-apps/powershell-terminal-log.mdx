@@ -1,0 +1,27 @@
+---
+title: PowerShell / Terminal Log
+description: Theo dõi trực tiếp nhật ký lệnh PowerShell và kết quả thực thi các tác vụ Debloat.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/uwp-apps/uwp-apps-01.png" 
+  alt="Giao diện tab Ứng dụng UWP (UWP Apps)"
+/>
+
+## 2. Tổng quan
+
+Khung **PowerShell / Terminal Log** hiển thị toàn bộ dòng lệnh PowerShell (cmdlet như `Remove-AppxPackage`, `DISM /Remove-Capability`) và trạng thái trả về (Success / Warning / Error) theo thời gian thực khi HyperLis đang dọn dẹp hệ thống.
+
+## 3. Mục đích & Trường hợp sử dụng
+
+* Kỹ thuật viên kiểm tra tính minh bạch và câu lệnh thực tế mà HyperLis đang chạy.
+* Phát hiện chính xác mã lỗi nếu một gói ứng dụng không thể gỡ bỏ (ví dụ: lỗi bị khóa bởi tiến trình đang chạy).
+
+<Aside type="tip">
+Bạn có thể nhấp vào nút **Copy Log** để sao chép toàn bộ nhật ký lỗi gửi cho đội ngũ hỗ trợ kỹ thuật.
+</Aside>

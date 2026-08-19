@@ -1,0 +1,31 @@
+---
+title: Backup Startup & Configurations
+description: Xuất và lưu trữ bản sao lưu trạng thái danh sách ứng dụng khởi động và cấu hình tinh chỉnh.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/startup-apps/startup-apps-01.png" 
+  alt="Giao diện tab Khởi chạy (Startup Apps)"
+/>
+
+## 2. Tổng quan
+
+Tính năng **Backup** trong phân hệ Startup Apps cho phép bạn xuất danh sách trạng thái các ứng dụng khởi động và cấu hình tinh chỉnh ra một tệp tin sao lưu (`.json`) để lưu trữ an toàn hoặc sao chép sang máy tính khác.
+
+## 3. Hướng dẫn sao lưu cấu hình
+
+<Steps>
+1. Mở HyperLis, chọn tab **Khởi chạy > Backup**.
+2. Nhấp vào nút **Export Backup**.
+3. Chọn thư mục lưu trữ trên ổ đĩa và đặt tên tệp (ví dụ: `HyperLis_Startup_Backup_2026.json`).
+4. Nhấn **Save** để hoàn tất.
+</Steps>
+
+<Aside type="note">
+Tệp sao lưu chỉ chứa dữ liệu cấu hình văn bản nhẹ và an toàn, không chứa thông tin đăng nhập hoặc mật khẩu người dùng.
+</Aside>

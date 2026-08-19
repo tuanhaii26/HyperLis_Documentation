@@ -1,0 +1,44 @@
+---
+title: Disk Drives
+description: Tinh chỉnh tham số ghi đệm ổ đĩa, vô hiệu hóa 8.3 Name Creation và tối ưu hóa hệ thống tệp NTFS.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/general/general-01.png" 
+  alt="Giao diện tab Chung (General)"
+/>
+
+## 2. Tổng quan
+
+Tùy chọn **Disk Drives** trong HyperLis cho phép tinh chỉnh sâu hệ thống tệp tin NTFS của Windows nhằm giảm thiểu các thao tác ghi đĩa thừa (I/O operations), đặc biệt tối ưu cho ổ đĩa SSD NVMe và SSD SATA.
+
+## 3. Mục đích & Trường hợp sử dụng
+
+* Giảm số lần ghi đọc nền giúp kéo dài tuổi thọ chip nhớ SSD (TBW).
+* Tăng tốc độ truy xuất thư mục chứa hàng chục nghìn tệp tin nhỏ.
+
+## 4. Hướng dẫn thực hiện
+
+<Steps>
+1. Mở HyperLis, chọn tab **Chung (General)**.
+2. Tìm tùy chọn **Optimize Disk Drives / NTFS Tweaks**.
+3. Bật tùy chọn sang **ON** và nhấn **Apply Changes**.
+4. Khởi động lại Windows để hệ thống tệp nạp lại tham số.
+</Steps>
+
+## 5. Tham số kỹ thuật
+
+| Tham số | Tác dụng |
+| :--- | :--- |
+| **Disable NTFS Last Access Update** | Không cập nhật mốc thời gian truy cập gần nhất mỗi khi đọc file (giảm 30% thao tác ghi siêu dữ liệu) |
+| **Disable 8.3 Name Creation** | Tắt tính năng tạo tên ngắn chuẩn DOS cũ (MS-DOS 8.3 filename generation) |
+| **Enable Write Caching** | Kích hoạt bộ đệm ghi cho thiết bị lưu trữ |
+
+<Aside type="note">
+Các tinh chỉnh này hoàn toàn an toàn và được khuyến nghị áp dụng cho 100% các dòng ổ cứng SSD hiện đại.
+</Aside>

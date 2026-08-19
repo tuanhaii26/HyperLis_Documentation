@@ -1,0 +1,42 @@
+---
+title: App Telemetry
+description: Kiểm soát và vô hiệu hóa telemetry của các ứng dụng tích hợp bên thứ ba và Microsoft Store Apps.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/general/general-01.png" 
+  alt="Giao diện tab Chung (General)"
+/>
+
+## 2. Tổng quan
+
+Bên cạnh telemetry của hệ điều hành, nhiều ứng dụng tích hợp sẵn (Microsoft Store Apps, Edge, Office, Xbox Game Bar) cũng định kỳ gửi dữ liệu sử dụng về máy chủ. **App Telemetry** cho phép vô hiệu hóa tập trung các cơ chế này.
+
+## 3. Mục đích & Trường hợp sử dụng
+
+* Ngăn các ứng dụng Store và phần mềm bên thứ ba tự động gửi thống kê hành vi người dùng.
+* Giảm số lượng tác vụ lập lịch ngầm (Task Scheduler jobs) chạy mỗi ngày.
+
+## 4. Hướng dẫn thực hiện
+
+<Steps>
+1. Mở HyperLis, chọn tab **Chung (General)**.
+2. Tìm tùy chọn **Disable App Telemetry & Scheduled Feedback Tasks**.
+3. Bật tùy chọn sang **ON** và nhấn **Apply Changes**.
+</Steps>
+
+## 5. Tham số
+
+| Tùy chọn | Tác động |
+| :--- | :--- |
+| **Disable Customer Experience Improvement Program (CEIP)** | Tắt toàn bộ tác vụ CEIP trong Task Scheduler |
+| **Disable App Readiness Background Tasks** | Giảm độ trễ khi khởi động ứng dụng UWP |
+
+<Aside type="note">
+Việc tắt App Telemetry không làm ảnh hưởng đến khả năng tải và cập nhật ứng dụng trên Microsoft Store.
+</Aside>

@@ -1,0 +1,61 @@
+---
+title: Cài đặt Microsoft Office (Office Setup)
+description: Tùy chỉnh cài đặt bộ Office qua tệp XML ODT, tải bộ cài offline và công cụ gỡ bỏ chuyên sâu SaRA Scrub.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/office-setup/office-setup-01.png" 
+  alt="Giao diện tab Cài đặt Office (Office Setup)"
+/>
+
+## 2. Tổng quan về phân hệ
+
+**Office Setup (Cài đặt Office)** là module cài đặt Microsoft Office chuyên sâu thay thế hoàn toàn cho các bộ cài đặt truyền thống. Công cụ vận hành theo luồng cấu hình XML chính thức của Microsoft (*Office Deployment Tool - ODT*), giúp bạn chủ động lựa chọn phiên bản, kiến trúc (32/64-bit), kênh cập nhật, ngôn ngữ và chính xác những ứng dụng cần dùng.
+
+---
+
+## 3. Ba luồng tác vụ cốt lõi
+
+### Cấu hình & Tạo XML cài đặt (Configuration XML)
+* **Phiên bản hỗ trợ:** Hỗ trợ đầy đủ các phiên bản từ **Microsoft 365**, **Office 2024**, **Office 2021 LTSC**, **Office 2019**, **Office 2016** cho đến **Office 2013**.
+* **Kiến trúc & Kênh cập nhật:** Tùy chọn 32-bit hoặc 64-bit; kênh cập nhật *Current, Monthly Enterprise, Semi-Annual Enterprise*.
+* **Tùy chọn ứng dụng chi tiết:** Chọn riêng lẻ từng ứng dụng: *Word, Excel, PowerPoint, Outlook, OneNote, Access, Publisher, Teams, OneDrive, Skype*; bổ sung *Visio Pro/Standard* và *Project Pro/Standard*.
+* **Bộ chọn nhanh (Quick Select):** Nút chọn nhanh *Minimum (chỉ Word, Excel, PPT)*, *Recommended*, *Full* hoặc *Unselect All*.
+* **Configuration XML Preview:** Tự động sinh mã XML thời gian thực để bạn kiểm tra trước khi chạy.
+
+### Tải trước bộ cài Offline (Download Office)
+* Khi nhấn **Download**, HyperLis yêu cầu chọn thư mục lưu và tự động tạo thư mục tải riêng theo định dạng `[Tên phiên bản]_[Timestamp]`.
+* Phần mềm ghi tệp `configuration.xml`, sao chép `setup.exe` (hoặc `setup2013.exe` đối với Office 2013) và tự động thực thi lệnh `/download` để tải trọn bộ cài đặt sạch từ máy chủ Microsoft.
+
+### Cài đặt trực tiếp (Install Office)
+* Khi bấm **Install**, phần mềm tự động giải nén môi trường tạm, đồng bộ cấu hình XML và khởi chạy `setup.exe /configure` để bắt đầu cài đặt âm thầm theo đúng những gì bạn đã chọn.
+
+### Gỡ bỏ chuyên sâu (Uninstall Office & SaRA Scrub)
+* Tính năng gỡ bỏ yêu cầu quyền Administrator và hộp kiểm xác nhận an toàn.
+* HyperLis sử dụng cấu hình `RemoveAll` kết hợp tự động kích hoạt tham số `FORCEAPPSHUTDOWN` và `RemoveMSI`.
+* **Dọn sâu bằng Microsoft SaRA:** Nếu phát hiện còn sót lại tệp dư thừa từ các bản Office cũ (như Office 2013 MSI / Office15), công cụ sẽ tự động gọi kịch bản **SaRA OfficeScrubScenario** của Microsoft để quét sạch toàn bộ registry và file rác còn sót.
+
+---
+
+## 4. Hướng dẫn từng bước sử dụng Office Setup
+
+<Steps>
+1. Mở HyperLis, chọn tab **Cài đặt Office (Office Setup)**.
+2. Chọn nhóm phiên bản (Ví dụ: *Microsoft 365* hoặc *Office 2021 / 2024*).
+3. Chọn phiên bản chi tiết (*Detailed Version*), Kiến trúc (*64-bit / 32-bit*), Kênh cập nhật, Ngôn ngữ (*Tiếng Việt / Tiếng Anh*) và Loại License (*Volume / Retail*).
+4. Tích chọn các ứng dụng muốn cài đặt (hoặc bấm nút *Recommended*).
+5. Kiểm tra mục **Configuration XML Preview** và **Configuration Overview**.
+6. Thực hiện hành động:
+   * Nếu muốn tải trước bộ cài offline: bấm **Download** và chọn thư mục lưu.
+   * Nếu muốn cài đặt ngay: bấm **Install**.
+   * Nếu muốn gỡ sạch toàn bộ Office trên máy: tích chọn ô xác nhận ở mục *Uninstall Office* và bấm **Uninstall Office**.
+</Steps>
+
+<Aside type="tip">
+**Mẹo cho IT Support:** Khi cần cài đặt Office cho nhiều máy tính trong văn phòng, bạn hãy bấm **Download** trước bộ cài về USB. Ở các máy trạm tiếp theo, bạn chỉ cần nạp cấu hình và cài đặt trực tiếp từ USB để tiết kiệm tối đa thời gian tải mạng.
+</Aside>

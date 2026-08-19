@@ -1,0 +1,65 @@
+---
+title: Tạo bộ cài & Cứu hộ hệ thống (USB Boot)
+description: Hướng dẫn tạo USB Boot chuẩn UEFI/Legacy, tải ISO gốc từ Fido, bản Win tối ưu sẵn và phím tắt Restart to BIOS.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/usb-boot/usb-boot-01.png" 
+  alt="Giao diện tab USB Boot"
+/>
+
+## 2. Tổng quan về phân hệ
+
+Tab **USB Boot** là một công cụ mạnh mẽ dành riêng cho việc tạo các thiết bị khởi động (*Bootable USB*) một cách nhanh chóng và chuẩn xác. Thay vì phải sử dụng các phần mềm bên thứ ba phức tạp, HyperLis tích hợp sẵn toàn bộ quy trình đóng gói bộ cài Windows và quản lý tệp tin ISO tối ưu nhất cho người dùng.
+
+---
+
+## 3. Các thành phần chính (Core Features)
+
+* **Select your USB/Drive:** Tự động liệt kê các thiết bị lưu trữ USB gắn ngoài đang kết nối, hiển thị chi tiết tên thiết bị và dung lượng thực tế (Ví dụ: `ST500LM021 - 465.8 GB`) để tránh chọn nhầm ổ đĩa.
+* **Select Windows version:** Cung cấp sẵn các phiên bản Windows đã được tối ưu hóa từ kho dữ liệu của HyperLis:
+  * Ví dụ: `Windows 10 22H2 Optimize_AutoActive` — Bản Windows đã được tinh chỉnh hiệu năng mượt mà và tự động kích hoạt bản quyền sẵn.
+* **Or select your own ISO:** Cho phép bạn tự chọn tệp tin ISO Windows có sẵn trong máy tính thông qua nút **Browse**.
+* **Get other ISO (Choose a Resource):** Trung tâm tải xuống trực tiếp các bản ISO Windows nguyên gốc từ Microsoft hoặc công cụ cứu hộ thông qua nguồn uy tín **Fido - Pbatard**.
+
+---
+
+## 4. Các thao tác điều khiển (Action Buttons)
+
+* **Start:** Bắt đầu quá trình nạp bộ cài vào USB. HyperLis sẽ tự động định dạng và cấu hình phân vùng để đảm bảo USB có thể khởi động tốt trên cả 2 chuẩn **UEFI** và **Legacy (MBR/GPT)**.
+* **Restart to BIOS/UEFI:** Lối tắt cực kỳ tiện lợi giúp máy tính khởi động lại và truy cập thẳng vào giao diện cài đặt **BIOS/UEFI** mà không cần phải canh nhấn phím tắt (*F2, F12, Del*) phức tạp.
+* **Fix WMIC:** Công cụ tự động sửa lỗi *Windows Management Instrumentation* — lỗi hệ thống phổ biến khiến phần mềm không thể nhận diện được thông tin ổ đĩa và phần cứng.
+
+---
+
+## 5. Lợi ích thực tế cho từng đối tượng
+
+* **Đối với IT Support & Helpdesk:**
+  * Tạo bộ cài siêu tốc, tiết kiệm thời gian chuẩn bị công cụ đi cài máy cho khách hàng.
+  * Tích hợp sẵn Driver cần thiết, giảm thiểu việc phải đi cài lại Driver thủ công.
+  * Cứu hộ chuyên nghiệp, vượt qua giới hạn phần cứng dễ dàng.
+* **Đối với Gamer & Người dùng nâng cao:**
+  * Sử dụng các bản Win sạch & tối ưu có sẵn để đạt FPS cao nhất ngay sau khi cài máy.
+  * Tự động bypass kiểm tra TPM 2.0 và Secure Boot khi cài Windows 11 trên các máy tính đời cũ.
+* **Đối với Người dùng thông thường:** Thao tác an toàn và đơn giản, không cần hiểu sâu về định dạng FAT32 hay NTFS.
+
+---
+
+## 6. Hướng dẫn sử dụng
+
+<Steps>
+1. Cắm USB dung lượng tối thiểu 8GB vào máy tính.
+2. Mở HyperLis, chọn tab **USB Boot**.
+3. Tại ô **Select your USB/Drive**, chọn đúng ổ đĩa USB của bạn.
+4. Chọn phiên bản Windows có sẵn trong kho hoặc nhấp **Browse** để chọn tệp ISO từ máy.
+5. Nhấn nút **Start** để bắt đầu quá trình tạo USB Boot.
+</Steps>
+
+<Aside type="caution">
+**Lưu ý quan trọng:** Trước khi nhấn nút **Start**, hãy đảm bảo bạn đã sao lưu toàn bộ dữ liệu quan trọng trong USB sang nơi khác, vì quá trình tạo bộ cài sẽ tiến hành định dạng (Format) lại toàn bộ ổ đĩa USB.
+</Aside>

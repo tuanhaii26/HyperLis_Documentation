@@ -1,0 +1,78 @@
+---
+title: Giao thức Cài đặt Windows Tự động (WSAP)
+description: Cài đặt lại Windows tự động trực tiếp từ ổ cứng không cần USB Boot, tự nạp Driver, tệp Unattend và khôi phục phân vùng Drive X.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/wsap/wsap-01.png" 
+  alt="Giao diện tab WSAP"
+/>
+
+## 2. Tổng quan về WSAP
+
+**WSAP (Windows Setup Automatic Protocol)** là giao thức độc quyền cho phép bạn **tự động cài đặt lại toàn bộ hệ điều hành Windows trực tiếp ngay từ máy tính của mình mà không cần bất kỳ chiếc USB Boot hay ổ cứng cứu hộ WinPE nào**.
+
+Công cụ tự động hóa toàn bộ quy trình phân vùng, nạp bộ cài, tích hợp driver và bypass toàn bộ yêu cầu phần cứng khắt khe của Windows 11.
+
+---
+
+## 3. Các bước thiết lập trong WSAP
+
+### Chọn ổ cứng và phân vùng cài đặt
+* **Choose Your Hard Disk:** WSAP tự động quét danh sách ổ cứng và nhận diện các định dạng không phù hợp (như Dynamic Disk). Hãy ưu tiên chọn đúng ổ cứng đang chạy Windows hiện tại.
+* **Choose the EFI Partition:** Chọn phân vùng khởi động EFI của hệ thống (ưu tiên phân vùng được đánh dấu thẻ *System / FAT32*).
+* **Choose the Boot Partition:** Chọn phân vùng đích để cài Windows mới (chính là phân vùng ổ đĩa `C:` hiện tại).
+
+### Chọn tệp tin ISO và phiên bản
+* **Select Windows Version:** Nhấp **Browse** và chọn tệp tin ISO Windows bạn muốn cài đặt (khuyến nghị sử dụng tệp ISO gốc chính thức từ Microsoft để có độ ổn định cao nhất).
+* **Select Windows Edition:** Chọn phiên bản hệ điều hành bạn mong muốn cài đặt bên trong tệp ISO (Ví dụ: *Windows 10/11 Pro*).
+
+### Tùy chọn Driver & File cấu hình tự động
+* **Select Driver:** Tùy chọn nạp trước thư mục chứa Driver phần cứng để hệ thống tự động cài đặt driver trong quá trình bung Win.
+* **Select File Unattend:** Tùy chọn nạp tệp `autounattend.xml` để tự động hóa hoàn toàn các bước thiết lập ban đầu (OOBE).
+
+---
+
+## 4. Ba tùy chọn bắt buộc (CỰC KỲ QUAN TRỌNG)
+
+Khi cấu hình cài đặt với WSAP, bạn **bắt buộc phải tích chọn 3 mục sau**:
+
+1. ✅ **Format Target Partition:** Tự động định dạng sạch sẽ phân vùng ổ đĩa đích trước khi nạp Windows mới.
+2. ✅ **Auto Restart after partition:** Tự động khởi động lại máy tính sau khi WSAP hoàn tất việc nạp dữ liệu phân vùng để bước vào giai đoạn cài đặt.
+3. ✅ **Add entries to Boot Menu:** Tự động thêm môi trường cứu hộ WinPE của Zịt vào menu khởi động của Windows. Điều này giúp phòng ngừa tuyệt đối trường hợp mất điện giữa chừng — khi có điện lại, hệ thống sẽ tự động boot lại vào WinPE để tiếp tục cài đặt mà không bị lỗi.
+
+### Tùy chọn nâng cao bổ sung (Advanced Options):
+* **Bypass Windows 11 Requirements:** Tự động vượt rào kiểm tra TPM 2.0, Secure Boot và RAM tối thiểu của Windows 11.
+* **Bypass Microsoft Account:** Tự động bỏ qua yêu cầu đăng nhập tài khoản Microsoft bắt buộc và tạo sẵn tài khoản cục bộ (Local Account).
+
+---
+
+## 5. Tính năng thu hồi phân vùng (Reclaim Drive X)
+
+Sau khi cài đặt Windows thành công, một phân vùng tạm dung lượng nhỏ (ổ đĩa `X:`) được WSAP tạo ra sẽ còn tồn tại. 
+
+Để giải phóng hoàn toàn dung lượng này, bạn chỉ cần mở lại HyperLis, vào tab WSAP và nhấn nút **Reclaim Drive X** để công cụ tự động sáp nhập dung lượng này trở lại vào ổ đĩa chính của bạn.
+
+---
+
+## 6. Lợi ích thực tế cho IT Support & Helpdesk
+
+WSAP là công cụ cứu cánh tuyệt vời giúp kỹ thuật viên có thể **cài đặt lại Windows cho khách hàng hoàn toàn từ xa qua mạng (Remote Install)** khi khách hàng ở xa không có sẵn USB Boot hay kiến thức kỹ thuật.
+
+---
+
+## 7. Hướng dẫn sử dụng
+
+<Steps>
+1. Mở HyperLis với quyền Administrator, chọn tab **WSAP**.
+2. Chọn ổ đĩa, phân vùng EFI và phân vùng Boot (ổ C).
+3. Nhấp **Browse** chọn tệp ISO Windows gốc và chọn Edition (Pro/Home).
+4. Tích chọn đủ **3 mục bắt buộc**: *Format Target Partition*, *Auto Restart after partition*, *Add entries to Boot Menu*.
+5. Nhấn nút **Start**. Đọc kỹ 2 thông báo xác nhận và chọn đồng ý để tiến trình tự động bắt đầu.
+6. Sau khi máy khởi động lại và vào Windows mới, mở tab WSAP và nhấn **Reclaim Drive X**.
+</Steps>

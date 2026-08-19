@@ -1,0 +1,48 @@
+---
+interface Props {
+  src?: string;
+  alt: string;
+  caption?: string;
+  title?: string;
+}
+
+const {
+  src = '/images/hyperlis/placeholder.png',
+  alt,
+} = Astro.props;
+---
+
+<figure class="hl-screenshot-wrapper">
+  <img 
+    src={src} 
+    alt={alt} 
+    loading="lazy" 
+    class="hl-screenshot-img"
+    onerror="if (this.src !== '/images/hyperlis/placeholder.png') { this.src = '/images/hyperlis/placeholder.png'; }"
+  />
+</figure>
+
+<style>
+  .hl-screenshot-wrapper {
+    margin: 1.5rem 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hl-screenshot-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 540px;
+    display: block;
+    border-radius: 0.5rem;
+    object-fit: contain;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  :root[data-theme='dark'] .hl-screenshot-img {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+title: Chính sách an toàn & Khôi phục
+description: Hướng dẫn cơ chế bảo vệ hệ thống, tạo Restore Point và chính sách an toàn trước khi tinh chỉnh Windows.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+import PlaceholderNotice from '../../../components/PlaceholderNotice.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/overview/overview-01.png" 
+  alt="Giao diện tab Tổng quan (Overview)"
+/>
+
+## 2. Tổng quan
+
+Chính sách an toàn là nguyên tắc hàng đầu trong HyperLis. Trước khi thực hiện bất kỳ thay đổi nào lên Registry, dịch vụ hệ thống hay gỡ ứng dụng UWP, HyperLis luôn khuyến nghị hoặc tự động kích hoạt tạo **System Restore Point (Điểm khôi phục Windows)**.
+
+## 3. Điều kiện an toàn trước khi thực hiện
+
+* Ổ đĩa hệ thống `C:` đã bật tính năng **System Protection**.
+* Dung lượng ổ `C:` trống tối thiểu 2 GB.
+* Đăng nhập với tài khoản có quyền Administrator.
+
+## 4. Quy trình tạo Restore Point
+
+<Steps>
+1. **Truy cập nút chức năng trên Action Bar**:
+   Nhấp vào nút **Create Restore Point** (hoặc biểu tượng Khiên an toàn).
+
+2. **Xác nhận tên điểm khôi phục**:
+   Nhập nhãn nhận diện (ví dụ: `HyperLis_Safe_Point_Before_Optimization`).
+
+3. **Thực thi tạo điểm khôi phục**:
+   Nhấn **Create Now** và chờ khoảng 30 giây để Windows ghi lại trạng thái Registry.
+
+4. **Kiểm tra trạng thái sẵn sàng**:
+   Khi xuất hiện thông báo thành công, bạn có thể an tâm áp dụng các tinh chỉnh tiếp theo.
+</Steps>
+
+## 5. Cảnh báo an toàn
+
+<Aside type="caution">
+Nếu dịch vụ Volume Shadow Copy (`VSS`) trên máy tính của bạn bị vô hiệu hóa, tính năng tạo điểm khôi phục sẽ không thể hoạt động. Hãy kích hoạt lại VSS trước khi tối ưu.
+</Aside>
+
+## 6. Hoàn tác & Phục hồi sự cố
+
+Nếu gặp sự cố, bạn có thể hoàn tác ngay thông qua lệnh `rstrui.exe` hoặc sử dụng tính năng tại [Sửa lỗi Windows](/windows-repair/fix-windows-errors).

@@ -1,0 +1,47 @@
+---
+title: Quản lý Windows Update (Windows Update)
+description: Tạm dừng cập nhật tự động đến năm 2036, chặn ghi đè Driver GPU và kiểm soát dịch vụ cập nhật hệ thống.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/windows/windows-01.png" 
+  alt="Giao diện tab Windows - Ảnh 1"
+/>
+
+<Screenshot 
+  src="/images/hyperlis/windows/windows-02.png" 
+  alt="Giao diện tab Windows - Ảnh 2"
+/>
+
+## 2. Tổng quan về phân hệ Windows Update
+
+Mục **Windows Update** cho phép bạn hoàn toàn kiểm soát thời điểm và cách thức hệ điều hành tải bản vá, giúp máy tính luôn duy trì trạng thái ổn định và tránh tuyệt đối tình trạng máy tự ý khởi động lại khi bạn đang render hay chơi game.
+
+---
+
+## 3. Các tùy chọn chi tiết
+
+* **Pause Update Until 2036:** Tạm dừng các bản cập nhật Windows tự động kéo dài đến tận năm **2036**, giúp máy tính hoạt động ổn định lâu dài. Sau khi bật tính năng này, bạn có thể vào phần Cài đặt Update của Windows để tùy ý chọn tạm dừng tới *n* tuần theo nhu cầu.
+* **Exclude Drivers from Updates:** Ngăn Windows Update tự động tải và ghi đè các Driver cũ hoặc không tương thích lên Driver hiện tại của máy (đặc biệt là Driver card màn hình GPU NVIDIA/AMD).
+* **Disable Insider Service:** Tắt dịch vụ tham gia chương trình thử nghiệm Windows Insider Program của Microsoft.
+* **Disable MS Store Updates:** Tắt tính năng tự động cập nhật ngầm cho các ứng dụng Microsoft Store.
+
+---
+
+## 4. Hướng dẫn sử dụng
+
+<Steps>
+1. Mở HyperLis, chọn tab **Windows**.
+2. Tìm đến khu vực **Windows Update**.
+3. Tích chọn các mục mong muốn (khuyến nghị tích cả **Pause Update Until 2036** và **Exclude Drivers from Updates**).
+4. Nhấn nút **"Restart to apply changes"** ở góc trên bên phải giao diện để áp dụng chính sách.
+</Steps>
+
+<Aside type="tip">
+**Mẹo cho IT Support:** Khi xử lý máy khách hàng bị chậm hoặc lag đột ngột, hãy sử dụng tổ hợp **Disable Telemetry + Pause Update** để ngăn chặn các tiến trình ngầm chiếm dụng băng thông mạng và CPU ngay lập tức.
+</Aside>

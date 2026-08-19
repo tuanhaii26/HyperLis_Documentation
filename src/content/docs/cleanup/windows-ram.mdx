@@ -1,0 +1,49 @@
+---
+title: Dọn dẹp Hệ thống & Bộ nhớ RAM (Windows & RAM)
+description: Giải phóng bộ nhớ đệm RAM Standby List, xóa file tạm, dọn sạch cache Windows Update và làm trống thùng rác.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/cleanup/cleanup-01.png" 
+  alt="Giao diện tab Dọn dẹp (Cleanup)"
+/>
+
+## 2. Tổng quan về phân hệ
+
+Tính năng **Dọn dẹp (Cleaning)** giúp loại bỏ các tệp tin tạm thời, báo cáo lỗi hệ thống và dữ liệu không cần thiết nhằm giải phóng dung lượng ổ đĩa cũng như cải thiện hiệu suất tổng thể. Đây là công cụ quan trọng để duy trì sự ổn định của hệ điều hành sau một thời gian dài sử dụng.
+
+---
+
+## 3. Các thành phần dọn dẹp trong mục Windows & RAM
+
+* **Temporary Files:** Xóa các tệp tin tạm thời (`%temp%`, `Temp`) phát sinh trong quá trình vận hành của các phần mềm và hệ điều hành.
+* **Update Cache:** Giải phóng bộ nhớ đệm của Windows Update (`SoftwareDistribution\Download`), thường chiếm từ vài trăm MB đến hàng chục GB dung lượng ổ C.
+* **BSOD Minidumps:** Xóa các tệp nhật ký ghi lại khi máy tính gặp sự cố lỗi "màn hình xanh chết chóc" (Lưu ý: Chỉ nên xóa sau khi bạn đã chẩn đoán xong nguyên nhân lỗi hệ thống).
+* **System Restore:** Dọn dẹp bớt các điểm khôi phục cũ để lấy lại không gian lưu trữ cho ổ cứng.
+* **Error Requests:** Loại bỏ các tệp tin báo cáo lỗi không cần thiết.
+* **Empty Recycle Bin:** Làm trống thùng rác Windows hoàn toàn chỉ với một cú nhấp chuột.
+* **RAM Cache & RAM Usage:** Sử dụng các thuật toán giải phóng bộ nhớ RAM đang bị chiếm dụng bởi các tiến trình chờ (*Standby List / Working Set*), giúp máy tính phản hồi tức thì mà không cần khởi động lại máy.
+
+---
+
+## 4. Lợi ích thực tế cho từng đối tượng
+
+* **Dành cho Gamer:** Hãy chạy tính năng **RAM Cache** trước khi vào các trận đấu quan trọng để đảm bảo bộ nhớ luôn ở trạng thái sẵn sàng và giải phóng dung lượng cao nhất.
+* **Dành cho IT Support:** Sử dụng **Update Cache** và **System Restore** là cách nhanh nhất để giải phóng hàng chục GB dung lượng cho máy khách hàng mà không làm ảnh hưởng đến dữ liệu cá nhân.
+* **Dành cho Người dùng thường:** Chỉ cần chọn *Temporary Files* và *Empty Recycle Bin*, sau đó thực hiện dọn dẹp định kỳ mỗi tuần một lần để máy luôn mượt mà.
+
+---
+
+## 5. Hướng dẫn thực hiện
+
+<Steps>
+1. Mở HyperLis, chọn tab **Dọn dẹp (Cleaning)**.
+2. Tại mục **Windows & RAM**, tích chọn các khu vực muốn dọn rác.
+3. Chọn một trong các phương thức dọn dẹp bên dưới (ví dụ: *Clean by HyperLis* hoặc *Use both methods*).
+4. Nhấn nút bắt đầu và theo dõi dung lượng được giải phóng.
+</Steps>

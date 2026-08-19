@@ -1,0 +1,41 @@
+---
+title: Fullscreen Optimizations
+description: Tinh chỉnh cơ chế Fullscreen Optimizations và tối ưu chế độ toàn màn hình cho game trên Windows.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/general/general-01.png" 
+  alt="Giao diện tab Chung (General)"
+/>
+
+## 2. Tổng quan
+
+**Fullscreen Optimizations (FSO)** là tính năng của Windows nhằm kết hợp hiệu năng của chế độ Fullscreen độc quyền (Exclusive Fullscreen) với tính tiện lợi của Borderless Windowed (chuyển đổi Alt+Tab nhanh). Tuy nhiên, trên một số game DirectX 9/11, FSO có thể làm tăng độ trễ đầu vào (Input Lag) hoặc xung đột với G-Sync/FreeSync.
+
+## 3. Mục đích & Trường hợp sử dụng
+
+* Game thủ thi đấu FPS/eSports cần giảm tối đa input lag chuột.
+* Khắc phục lỗi nhấp nháy màn hình hoặc tụt khung hình khi chơi game ở chế độ toàn màn hình.
+
+## 4. Hướng dẫn thực hiện
+
+<Steps>
+1. Mở HyperLis, chọn tab **Chung (General)**.
+2. Tìm tùy chọn **Disable Fullscreen Optimizations (Global)**.
+3. Bật tùy chọn sang **ON** và nhấn **Apply Changes**.
+</Steps>
+
+## 5. Tham số
+
+| Tùy chọn | Tác động kỹ thuật | Khuyến nghị |
+| :--- | :--- | :--- |
+| **Disable Fullscreen Optimizations** | Sửa đổi registry `GameConfigStore` để tắt FSO toàn cầu | Bật cho máy chuyên chơi game |
+
+<Aside type="tip">
+Sau khi tắt FSO, các tựa game sẽ trực tiếp chiếm quyền kiểm soát khung hiển thị của GPU, đem lại cảm giác điều khiển chuột nhạy và trực tiếp hơn.
+</Aside>

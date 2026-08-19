@@ -1,0 +1,43 @@
+---
+title: SmartScreen
+description: Quản lý và tinh chỉnh bộ lọc Windows Defender SmartScreen cho ứng dụng và trình duyệt.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/general/general-01.png" 
+  alt="Giao diện tab Chung (General)"
+/>
+
+## 2. Tổng quan
+
+**SmartScreen** là cơ chế bảo mật của Windows kiểm tra độ tin cậy của các tệp thực thi tải về từ Internet. Tuy nhiên, tính năng này thường làm chậm thời gian mở tệp mới do phải gửi hash tệp về máy chủ Microsoft để phân tích.
+
+## 3. Mục đích & Trường hợp sử dụng
+
+* Kỹ thuật viên thường xuyên chạy các công cụ Portable, file batch hoặc phần mềm nội bộ mà không muốn bị chặn bởi cảnh báo "Windows protected your PC".
+* Tăng tốc độ phản hồi khi mở các tệp thực thi mới tải về.
+
+## 4. Hướng dẫn thực hiện
+
+<Steps>
+1. Mở HyperLis, chọn tab **Chung (General)**.
+2. Tìm mục **Disable SmartScreen** và bật sang **ON**.
+3. Nhấn **Apply Changes**.
+</Steps>
+
+## 5. Tham số
+
+| Tùy chọn | Cơ chế Registry | Diễn giải |
+| :--- | :--- | :--- |
+| **Disable SmartScreen** | `SmartScreenPwrOnInit` = `0` | Tắt thông báo chặn tệp thực thi không rõ nguồn gốc |
+
+## 6. Cảnh báo & Lưu ý an toàn
+
+<Aside type="caution">
+Sau khi tắt SmartScreen, bạn phải cẩn trọng hơn khi tải và chạy các tệp tin từ các nguồn không xác định trên Internet.
+</Aside>

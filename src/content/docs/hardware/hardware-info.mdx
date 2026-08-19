@@ -1,0 +1,63 @@
+---
+title: Thông tin Phần cứng (Hardware Info)
+description: Tra cứu chi tiết thông số CPU, RAM, GPU, Mainboard, ổ cứng, phiên bản BIOS và công cụ xuất file thông số .txt.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/hardware/hardware-01.png" 
+  alt="Giao diện tab Phần cứng (Hardware)"
+/>
+
+## 2. Tổng quan về phân hệ
+
+Tab **Phần cứng (Hardware Info)** cung cấp cái nhìn toàn diện và trực quan nhất về toàn bộ cấu hình máy tính của bạn. Thay vì phải gõ các lệnh phức tạp như `dxdiag` hay `msinfo32`, HyperLis tổng hợp mọi thông số kỹ thuật quan trọng vào một giao diện duy nhất, giúp bạn nắm bắt tình trạng thiết bị chỉ trong vài giây.
+
+---
+
+## 3. Các thông số phần cứng chi tiết (Hardware Specifications)
+
+Giao diện liệt kê rõ ràng các thành phần cốt lõi của hệ thống:
+* **Operating System:** Hiển thị phiên bản Windows đang sử dụng (Ví dụ: *Microsoft Windows 10 Pro 64-bit*) và tên máy tính (*Desktop Name*).
+* **Processors (CPU):** Cung cấp chi tiết tên bộ vi xử lý, xung nhịp và số lượng nhân/luồng (*Cores / Threads*).
+* **Memory (RAM):** Cho biết tổng dung lượng RAM và tốc độ bus thực tế hiện tại (Ví dụ: `16 GiB @ 3200 MHz`) để đánh giá khả năng đa nhiệm.
+* **Motherboards:** Hiển thị thông tin tên nhà sản xuất bo mạch chủ và Chipset, hỗ trợ tìm kiếm Driver chính xác.
+* **Graphics (GPU):** Liệt kê đầy đủ các card đồ họa tích hợp (iGPU) và card rời (Ví dụ: *NVIDIA GeForce GTX / RTX*).
+* **Disk Drives:** Liệt kê toàn bộ các ổ cứng đang kết nối (*NVMe, SSD SATA, HDD, USB*) kèm dung lượng thực tế.
+* **Network Adapters:** Hiển thị danh sách các card mạng Wi-Fi, cổng Ethernet LAN và cả card mạng ảo (*VMware, VirtualBox*).
+* **BIOS:** Cung cấp phiên bản BIOS hiện tại để biết khi nào cần cập nhật nhằm tăng tính ổn định cho hệ thống.
+
+---
+
+## 4. Các thao tác hỗ trợ (Action Tools)
+
+* **Detailed view:** Nút gạt thông minh cho phép chuyển đổi linh hoạt giữa chế độ hiển thị tóm tắt và chế độ hiển thị chi tiết mọi thông số kỹ thuật chuyên sâu.
+* **Save .txt file:** Tự động xuất toàn bộ thông tin phần cứng của máy ra một tệp văn bản `.txt`, giúp dễ dàng lưu trữ hoặc gửi cho kỹ thuật viên chẩn đoán.
+* **Copy All:** Sao chép nhanh toàn bộ nội dung cấu hình vào bộ nhớ tạm (*Clipboard*) để dán vào email hoặc các diễn đàn hỗ trợ kỹ thuật.
+
+---
+
+## 5. Giá trị thực tế cho từng đối tượng
+
+* **Đối với IT Support & Helpdesk:**
+  * **Chẩn đoán từ xa:** Chỉ cần yêu cầu khách hàng nhấn nút *Save .txt file* và gửi lại, bạn sẽ nắm bắt chính xác toàn bộ cấu hình máy mà không cần phải UltraViewer/AnyDesk mất thời gian.
+  * **Kiểm tra tương thích:** Dễ dàng xác định máy có đủ điều kiện nâng cấp hệ điều hành hoặc phần mềm đồ họa nặng hay không.
+* **Đối với Gamer:**
+  * Kiểm tra xem thanh RAM đã nhận đúng xung nhịp Bus tối đa (XMP/DOCP) hay chưa; card đồ họa có đang nhận đúng phiên bản driver không để đảm bảo mức FPS cao nhất.
+  * Đối chiếu nhanh cấu hình máy với yêu cầu phần cứng của các tựa game AAA mới nhất.
+* **Đối với Người dùng thông thường:** Nhận diện đúng các linh kiện bên trong máy khi cần đi sửa chữa, nâng cấp hoặc bảo trì, tránh bị nhầm lẫn.
+
+---
+
+## 6. Hướng dẫn sử dụng
+
+<Steps>
+1. Mở HyperLis, chọn tab **Phần cứng (Hardware Info)**.
+2. Xem bảng thông số chi tiết của máy.
+3. Gạt nút **Detailed view** nếu muốn xem thêm các thông số kỹ thuật nâng cao.
+4. Nhấn **Save .txt file** hoặc **Copy All** để xuất báo cáo cấu hình.
+</Steps>

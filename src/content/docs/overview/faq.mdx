@@ -1,0 +1,33 @@
+---
+title: FAQ (Câu hỏi thường gặp)
+description: Giải đáp các thắc mắc phổ biến về việc sử dụng HyperLis và an toàn hệ thống Windows.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/overview/overview-01.png" 
+  alt="Giao diện tab Tổng quan (Overview)"
+/>
+
+## 2. HyperLis có làm mất bản quyền Windows của tôi không?
+
+**Hoàn toàn không**. HyperLis không can thiệp hay xóa bỏ giấy phép bản quyền số (Digital License) của máy tính bạn.
+
+## 3. Sau khi tối ưu có bị lỗi Windows Update không?
+
+Nếu bạn không chọn tạm dừng Windows Update trong mục [Windows Update](/windows/windows-update), hệ thống vẫn tải và cài đặt các bản vá bình thường.
+
+## 4. Nếu muốn đưa mọi thứ về trạng thái ban đầu thì làm thế nào?
+
+Bạn có 3 cách hoàn tác an toàn:
+1. Sử dụng tính năng **Revert Changes** trong từng module.
+2. Nạp lại tệp sao lưu trong mục [Restore Startup & Configurations](/startup-apps/restore).
+3. Sử dụng [System Restore Point](/overview/safety-policy) đã tạo trước khi tối ưu.
+
+## 5. HyperLis có hỗ trợ Windows 7 hoặc Windows 8.1 không?
+
+HyperLis được thiết kế chuyên biệt và tối ưu tốt nhất cho **Windows 10 (64-bit)** và **Windows 11 (64-bit)**.

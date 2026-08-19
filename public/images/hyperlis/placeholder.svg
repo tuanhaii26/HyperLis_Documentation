@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" rx="10" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <!-- Window Header -->
+  <rect width="800" height="40" rx="10" fill="#1e293b"/>
+  <rect y="30" width="800" height="10" fill="#1e293b"/>
+  <circle cx="25" cy="20" r="6" fill="#ef4444"/>
+  <circle cx="45" cy="20" r="6" fill="#eab308"/>
+  <circle cx="65" cy="20" r="6" fill="#22c55e"/>
+  <text x="400" y="25" fill="#94a3b8" font-family="sans-serif" font-size="13" font-weight="500" text-anchor="middle">HyperLis — Windows System Optimizer (UI Mockup Placeholder)</text>
+  
+  <!-- Sidebar Mock -->
+  <rect x="20" y="60" width="180" height="370" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="35" y="80" width="150" height="12" rx="4" fill="#38bdf8" opacity="0.8"/>
+  <rect x="35" y="110" width="120" height="10" rx="3" fill="#64748b" opacity="0.6"/>
+  <rect x="35" y="135" width="135" height="10" rx="3" fill="#64748b" opacity="0.6"/>
+  <rect x="35" y="160" width="110" height="10" rx="3" fill="#64748b" opacity="0.6"/>
+  <rect x="35" y="185" width="140" height="10" rx="3" fill="#64748b" opacity="0.6"/>
+  <rect x="35" y="210" width="125" height="10" rx="3" fill="#64748b" opacity="0.6"/>
+
+  <!-- Content Mock -->
+  <rect x="220" y="60" width="560" height="100" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="240" y="95" fill="#f8fafc" font-family="sans-serif" font-size="16" font-weight="bold">Trạng thái hệ thống</text>
+  <text x="240" y="125" fill="#94a3b8" font-family="sans-serif" font-size="13">[Chưa có dữ liệu để xác minh giao diện thực tế]</text>
+  <rect x="640" y="95" width="120" height="32" rx="6" fill="#0284c7"/>
+  <text x="700" y="116" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle">Kiểm tra ngay</text>
+
+  <!-- Metric Cards -->
+  <rect x="220" y="180" width="175" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="240" y="200" width="80" height="8" rx="2" fill="#64748b"/>
+  <rect x="240" y="220" width="60" height="20" rx="4" fill="#38bdf8" opacity="0.7"/>
+
+  <rect x="412" y="180" width="175" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="432" y="200" width="80" height="8" rx="2" fill="#64748b"/>
+  <rect x="432" y="220" width="60" height="20" rx="4" fill="#38bdf8" opacity="0.7"/>
+
+  <rect x="605" y="180" width="175" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="625" y="200" width="80" height="8" rx="2" fill="#64748b"/>
+  <rect x="625" y="220" width="60" height="20" rx="4" fill="#38bdf8" opacity="0.7"/>
+
+  <!-- Table Area -->
+  <rect x="220" y="310" width="560" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <rect x="240" y="330" width="520" height="16" rx="4" fill="#334155"/>
+  <rect x="240" y="358" width="520" height="14" rx="3" fill="#1e293b"/>
+  <rect x="240" y="382" width="520" height="14" rx="3" fill="#1e293b"/>
+  <text x="500" y="380" fill="#64748b" font-family="sans-serif" font-size="13" text-anchor="middle">Vị trí dành riêng cho ảnh chụp màn hình HyperLis thực tế</text>
+</svg>

@@ -1,0 +1,39 @@
+---
+title: Cài đặt Runtimes & Thư viện bổ trợ
+description: Hướng dẫn cài đặt trọn gói Visual C++ All-in-One, DirectX Legacy Runtimes và .NET Framework để khắc phục lỗi thiếu DLL.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/downloads/downloads-01.png" 
+  alt="Giao diện tab Tải xuống (Downloads)"
+/>
+
+## 2. Tổng quan
+
+Hầu hết các lỗi khi khởi động game hoặc phần mềm đồ họa (như `VCRUNTIME140.dll missing`, `MSVCP140.dll missing`, `0xc000007b`, `d3dx9_43.dll not found`) đều do hệ điều hành thiếu các gói **Visual C++ Redistributable** và **DirectX Runtimes**.
+
+Mục **Runtimes** trong tab Tải xuống cho phép bạn cài đặt trọn bộ thư viện này chỉ với 1 cú nhấp chuột.
+
+## 3. Danh mục các gói thư viện
+
+* **Visual C++ Redistributable AIO (x86 & x64)**: Tích hợp đầy đủ từ bản 2005, 2008, 2010, 2012, 2013, 2015, 2017, 2019 đến 2022.
+* **DirectX End-User Runtimes (June 2010)**: Bổ sung các tệp DLL DirectX 9.0c, DirectPlay cần thiết cho các game cổ điển.
+* **Microsoft .NET Desktop Runtime**: Hỗ trợ .NET 6.0, .NET 7.0, .NET 8.0 cho các ứng dụng WPF và Windows Forms hiện đại.
+
+## 4. Hướng dẫn cài đặt
+
+<Steps>
+1. Mở HyperLis, chọn tab **Tải xuống > Runtimes**.
+2. Chọn gói **Visual C++ All-in-One Pack** hoặc **DirectX Web Installer**.
+3. Nhấn **Install Selected**.
+4. Quá trình giải nén và đăng ký DLL sẽ diễn ra tự động trong nền.
+</Steps>
+
+<Aside type="tip">
+Khuyến nghị cài đặt gói Visual C++ AIO ngay sau khi vừa cài lại Windows để không bao giờ gặp lỗi thiếu file DLL khi mở phần mềm hoặc trò chơi.
+</Aside>

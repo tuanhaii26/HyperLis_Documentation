@@ -1,0 +1,43 @@
+---
+title: Print/Fax Service
+description: Quản lý dịch vụ in ấn Print Spooler và dịch vụ Fax trên Windows.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/general/general-01.png" 
+  alt="Giao diện tab Chung (General)"
+/>
+
+## 2. Tổng quan
+
+Windows mặc định luôn chạy các dịch vụ máy in ảo (*Print Spooler - Spooler*) và *Fax Service* ngay cả khi máy tính của bạn hoàn toàn không kết nối với bất kỳ máy in vật lý nào.
+
+## 3. Mục đích & Trường hợp sử dụng
+
+* Máy tính cá nhân, laptop hoặc PC gaming không sử dụng máy in, muốn giải phóng RAM và chu kỳ xử lý của CPU.
+* Phòng ngừa các lỗ hổng bảo mật liên quan đến Print Spooler (như PrintNightmare).
+
+## 4. Hướng dẫn thực hiện
+
+<Steps>
+1. Mở HyperLis, chọn tab **Chung (General)**.
+2. Tìm tùy chọn **Disable Print & Fax Services**.
+3. Bật tùy chọn sang **ON** nếu bạn **KHÔNG** sử dụng máy in.
+4. Nhấn **Apply Changes**.
+</Steps>
+
+## 5. Tham số
+
+| Tùy chọn | Dịch vụ tác động | Khuyến nghị |
+| :--- | :--- | :--- |
+| **Disable Print Spooler** | `Spooler` -> Disabled | Chỉ tắt khi không có nhu cầu in ấn tệp tin hoặc lưu PDF qua máy in ảo |
+| **Disable Fax Service** | `Fax` -> Disabled | An toàn để tắt 100% cho mọi người dùng hiện đại |
+
+<Aside type="caution">
+Nếu bạn sử dụng máy in văn phòng hoặc tính năng xuất file *Microsoft Print to PDF*, vui lòng **KHÔNG** tắt mục *Print Spooler*.
+</Aside>

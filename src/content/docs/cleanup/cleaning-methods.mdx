@@ -1,0 +1,48 @@
+---
+title: Phương thức dọn dẹp & Tối ưu ổ đĩa (Action Buttons)
+description: Tìm hiểu các chế độ dọn dẹp Clean by HyperLis, Clean by Disk Cleanup, dọn dẹp trình duyệt và lệnh Optimize Drives (TRIM/Defrag).
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## 1. Hình ảnh giao diện
+
+<Screenshot 
+  src="/images/hyperlis/cleanup/cleanup-01.png" 
+  alt="Giao diện tab Dọn dẹp (Cleanup)"
+/>
+
+## 2. Dọn dẹp Trình duyệt (Browsers Cleaning)
+
+HyperLis hỗ trợ dọn dẹp chuyên sâu cho các trình duyệt web phổ biến nhất: **Google Chrome, Microsoft Edge, Brave và Mozilla Firefox**. Bạn có thể tùy chọn xóa các thành phần sau:
+
+* **Cache:** Xóa bộ nhớ đệm hình ảnh và trang web để tải mới dữ liệu sạch sẽ.
+* **Session:** Đăng xuất khỏi các phiên làm việc hiện tại.
+* **Cookies:** Xóa các tệp theo dõi của trang web (giúp tăng tính riêng tư).
+* **History:** Xóa lịch sử các trang web đã truy cập.
+* **Passwords:** Xóa mật khẩu đã lưu trong trình duyệt *(Cảnh báo: Chỉ chọn nếu bạn muốn xóa sạch dữ liệu cá nhân của mình)*.
+
+---
+
+## 3. Các phương thức thực hiện (Action Buttons)
+
+Phần mềm cung cấp 4 nút chức năng mạnh mẽ để tối ưu hóa quá trình dọn dẹp:
+
+* **Clean by HyperLis:** Sử dụng thuật toán dọn dẹp riêng của HyperLis để quét sâu vào các thư mục rác ẩn mà các công cụ Windows thường bỏ qua.
+* **Clean by Disk Cleanup:** Gọi công cụ Disk Cleanup tiêu chuẩn của hệ điều hành để dọn dẹp an toàn các thành phần hệ thống.
+* **Use both methods:** Kết hợp đồng thời cả hai phương thức trên để đạt hiệu quả dọn rác tối đa và giải phóng nhiều dung lượng nhất.
+* **Optimize Drives:** Kích hoạt tính năng chống phân mảnh (*Defragmentation* đối với ổ cứng HDD) hoặc gửi lệnh *TRIM* tối ưu hóa các ô nhớ (đối với ổ cứng SSD) nhằm phục hồi tốc độ đọc/ghi nguyên bản.
+
+---
+
+## 4. Hướng dẫn sử dụng
+
+<Steps>
+1. Mở HyperLis, chuyển sang tab **Dọn dẹp (Cleaning)**.
+2. Chọn trình duyệt và các dữ liệu duyệt web muốn dọn (Cache, Cookies, History).
+3. Nhấp chọn một trong 4 nút hành động ở hàng dưới cùng:
+   * Nhấn **Use both methods** để dọn sạch toàn diện cả hệ thống và trình duyệt.
+   * Nhấn **Optimize Drives** để kích hoạt TRIM SSD / Chống phân mảnh HDD.
+4. Chờ thanh tiến trình hoàn tất và khởi động lại trình duyệt để cảm nhận tốc độ.
+</Steps>
