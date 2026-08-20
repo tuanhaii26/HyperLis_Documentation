@@ -26,7 +26,12 @@
   "aside.danger": "Nguy hiểm",
   "fileTree.directory": "Danh mục",
   "builtWithStarlight.label": "Tạo với Starlight",
+  "dashboard": "Dashboard",
   "windows": "Danh mục Windows",
   "linux": "Danh mục Linux",
-  "cleanup": "Danh mục Cleanup"
+  "cleanup": "Danh mục Cleanup",
+  "downloads": "Danh mục Downloads",
+  "updates": "Danh mục Updates",
+  "restore": "Danh mục Restore",
+  "safety-policy": "Chính sách an toàn",
 }

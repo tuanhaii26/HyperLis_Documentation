@@ -25,5 +25,8 @@
   "aside.caution": "Thận trọng",
   "aside.danger": "Nguy hiểm",
   "fileTree.directory": "Danh mục",
-  "builtWithStarlight.label": "Tạo với Starlight"
+  "builtWithStarlight.label": "Tạo với Starlight",
+  "windows": "Danh mục Windows",
+  "linux": "Danh mục Linux",
+  "cleanup": "Danh mục Cleanup"
 }
