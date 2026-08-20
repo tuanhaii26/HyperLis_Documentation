@@ -82,11 +82,6 @@ validTabs.forEach(folder => {
   }
 });
 
-// Copy uploaded fallback image
-const uploadedImg = 'C:/Users/Admin/.gemini/antigravity-ide/brain/5c1d0144-23aa-4166-8f2a-d30bb9261d20/.user_uploaded/media_1787133909023.png';
-if (fs.existsSync(uploadedImg)) {
-  fs.copyFileSync(uploadedImg, path.join(imagesBaseDir, 'placeholder.png'));
-}
 
 // 2. Remove unused / obsolete folders in docsBaseDir
 if (fs.existsSync(docsBaseDir)) {
