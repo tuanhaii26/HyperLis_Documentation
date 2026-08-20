@@ -5,9 +5,9 @@ const docsBaseDir = path.join(__dirname, 'src', 'content', 'docs');
 const imagesBaseDir = path.join(__dirname, 'public', 'images', 'hyperlis');
 
 const targetFolders = [
-  'overview', 'general', 'windows', 'uwp-apps', 'startup-apps', 'downloads',
-  'cleanup', 'network', 'usb-boot', 'hardware', 'convert-skus', 'office-setup',
-  'extra-features', 'wsap', 'printer-repair', 'windows-repair'
+  'dashboard', 'general', 'windows', 'uwp-apps', 'startup-apps', 'downloads',
+  'cleanup', 'network', 'usb-boot', 'hardware', 'license', 'convert-skus', 'office-setup',
+  'extend-features', 'wsap', 'printer-repair', 'windows-repair'
 ];
 
 // 1. Ensure image folders exist

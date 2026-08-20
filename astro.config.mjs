@@ -49,17 +49,17 @@ export default defineConfig({
 			},
 			sidebar: [
 				{
-					label: '1. Tổng quan',
+					label: '1. Dashboard',
 					items: [
-						{ label: 'Tổng quan về HyperLis', slug: 'overview/overview' },
-						{ label: 'Cài đặt & Xác thực', slug: 'overview/installation-activation' },
-						{ label: 'Giao diện Dashboard', slug: 'overview/dashboard' },
-						{ label: 'Chính sách an toàn', slug: 'overview/safety-policy' },
-						{ label: 'Câu hỏi thường gặp (FAQ)', slug: 'overview/faq' },
-						{ label: 'Về HyperLis & Tác giả', slug: 'overview/about-hyperlis' },
-						{ label: 'Kích hoạt & Ủng hộ (Donate)', slug: 'overview/activation-donation' },
-						{ label: 'Cài đặt ngôn ngữ', slug: 'overview/language' },
-						{ label: 'Nhật ký thay đổi (Changelog)', slug: 'overview/changelog' },
+						{ label: 'Tổng quan về HyperLis', slug: 'dashboard/overview' },
+						{ label: 'Cài đặt & Xác thực', slug: 'dashboard/installation-activation' },
+						{ label: 'Giao diện Dashboard', slug: 'dashboard/dashboard' },
+						{ label: 'Chính sách an toàn', slug: 'dashboard/safety-policy' },
+						{ label: 'Câu hỏi thường gặp (FAQ)', slug: 'dashboard/faq' },
+						{ label: 'Về HyperLis & Tác giả', slug: 'dashboard/about-hyperlis' },
+						{ label: 'Kích hoạt & Ủng hộ (Donate)', slug: 'dashboard/activation-donation' },
+						{ label: 'Cài đặt ngôn ngữ', slug: 'dashboard/language' },
+						{ label: 'Nhật ký thay đổi (Changelog)', slug: 'dashboard/changelog' },
 					],
 				},
 				{

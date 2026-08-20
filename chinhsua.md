@@ -6,9 +6,9 @@
 
 1. Mở thư mục chứa ảnh trên GitHub:
    `public/images/hyperlis/[tên_tab]/`
-   *(Ví dụ: `overview`, `windows`, `cleanup`, `downloads`...)*
+   *(Ví dụ: `dashboard`, `windows`, `cleanup`, `downloads`...)*
 2. Bấm **Add file** -> **Upload files** -> Kéo thả ảnh từ máy tính lên.
-3. Đặt tên ảnh theo chuẩn: `[tên_tab]-01.png`, `[tên_tab]-02.png` (Ví dụ: `overview-01.png`, `windows-02.png`).
+3. Đặt tên ảnh theo chuẩn: `[tên_tab]-01.png`, `[tên_tab]-02.png` (Ví dụ: `dashboard-01.png`, `windows-02.png`).
 4. Nhấn **Commit changes...** để lưu.
 
 ---
@@ -17,7 +17,7 @@
 
 1. Mở file bài viết cần sửa:
    `src/content/docs/[tên_tab]/[tên_bài].mdx`
-   *(Ví dụ: `src/content/docs/overview/safety-policy.mdx`)*
+   *(Ví dụ: `src/content/docs/dashboard/safety-policy.mdx`)*
 2. Nhấn biểu tượng cây bút **Edit this file** (hoặc mở sửa trong VS Code).
 3. Chỉnh sửa nội dung văn bản.
 4. Chèn ảnh bằng thẻ:

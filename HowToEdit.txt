@@ -51,7 +51,7 @@ Bước 3: Mở tệp "astro.config.mjs", thêm Tab mới vào cuối danh sách
 --------------------------------------------------------------------------------
 A. ẢNH ĐẠI DIỆN CHUNG CHO TỪNG TAB (Tổng cộng 17 ảnh cho 17 Tab):
    Mỗi tab chỉ cần ảnh chụp giao diện lưu vào thư mục "public/images/hyperlis/[tên_tab]/":
-   - Tab 1  (Tổng quan)    : public/images/hyperlis/overview/overview-01.png
+   - Tab 1  (Dashboard)   : public/images/hyperlis/dashboard/dashboard-01.png
    - Tab 2  (Chung)        : public/images/hyperlis/general/general-01.png
    - Tab 3  (Windows)      : public/images/hyperlis/windows/windows-01.png
    - Tab 4  (Ứng dụng UWP) : public/images/hyperlis/uwp-apps/uwp-apps-01.png

@@ -18,8 +18,38 @@ if (fs.existsSync(oldLicenseFile)) {
   console.log('Migrated license-management.mdx from extend-features -> license');
 }
 
+// Migrate overview to dashboard if exists
+const oldOverviewDocDir = path.join(docsBaseDir, 'overview');
+const newDashboardDocDir = path.join(docsBaseDir, 'dashboard');
+if (fs.existsSync(oldOverviewDocDir)) {
+  if (!fs.existsSync(newDashboardDocDir)) {
+    fs.mkdirSync(newDashboardDocDir, { recursive: true });
+  }
+  const oldFiles = fs.readdirSync(oldOverviewDocDir);
+  oldFiles.forEach(file => {
+    fs.copyFileSync(path.join(oldOverviewDocDir, file), path.join(newDashboardDocDir, file));
+  });
+  fs.rmSync(oldOverviewDocDir, { recursive: true, force: true });
+  console.log('Migrated docs overview -> dashboard');
+}
+
+const oldOverviewImgDir = path.join(imagesBaseDir, 'overview');
+const newDashboardImgDir = path.join(imagesBaseDir, 'dashboard');
+if (fs.existsSync(oldOverviewImgDir)) {
+  if (!fs.existsSync(newDashboardImgDir)) {
+    fs.mkdirSync(newDashboardImgDir, { recursive: true });
+  }
+  const oldImgs = fs.readdirSync(oldOverviewImgDir);
+  oldImgs.forEach(img => {
+    let destName = img === 'overview-01.png' ? 'dashboard-01.png' : img;
+    fs.copyFileSync(path.join(oldOverviewImgDir, img), path.join(newDashboardImgDir, destName));
+  });
+  fs.rmSync(oldOverviewImgDir, { recursive: true, force: true });
+  console.log('Migrated images overview -> dashboard');
+}
+
 const tabConfigs = {
-  'overview': { name: 'Tổng quan (Overview)', img: 'overview-01.png' },
+  'dashboard': { name: 'Dashboard', img: 'dashboard-01.png' },
   'general': { name: 'Chung (General)', img: 'general-01.png' },
   'windows': { name: 'Windows', img: 'windows-01.png' },
   'uwp-apps': { name: 'Ứng dụng UWP (UWP Apps)', img: 'uwp-apps-01.png' },
