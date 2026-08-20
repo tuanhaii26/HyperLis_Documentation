@@ -65,7 +65,8 @@ const tabConfigs = {
   'extend-features': { name: 'Tính năng khác (Extend Features)', img: 'extend-features-01.png' },
   'wsap': { name: 'WSAP', img: 'wsap-01.png' },
   'printer-repair': { name: 'Sửa lỗi máy in (Printer Errors)', img: 'printer-repair-01.png' },
-  'windows-repair': { name: 'Sửa lỗi Windows (Fix Windows Error)', img: 'windows-repair-01.png' }
+  'windows-repair': { name: 'Sửa lỗi Windows (Fix Windows Error)', img: 'windows-repair-01.png' },
+  'demo': { name: 'Demo', img: 'demo-01.png' }
 };
 
 const validTabs = Object.keys(tabConfigs);

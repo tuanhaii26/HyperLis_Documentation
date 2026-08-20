@@ -186,6 +186,12 @@ export default defineConfig({
 						{ label: 'Sửa lỗi Windows & Quét SFC/DISM', slug: 'windows-repair/fix-windows-errors' },
 					],
 				},
+				{
+					label: '18. Demo',
+					items: [
+						{ label: 'Hướng dẫn tính năng Demo', slug: 'demo/demo' },
+					],
+				},
 			],
 		}),
 	],
