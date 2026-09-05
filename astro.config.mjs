@@ -49,78 +49,69 @@ export default defineConfig({
 			},
 			sidebar: [
 				{
+					label: 'Bắt đầu',
+					items: [
+						{ label: 'Tổng quan về HyperLis', slug: 'getting-started/overview' },
+						{ label: 'Cài đặt HyperLis', slug: 'getting-started/installation' },
+						{ label: 'Lưu ý sử dụng HyperLis', slug: 'getting-started/safety-policy' },
+						{ label: 'Câu hỏi thường gặp (FAQ)', slug: 'getting-started/faq' },
+						{ label: 'Về HyperLis & Tác giả', slug: 'getting-started/about-hyperlis' },
+						// { label: 'Kích hoạt & Ủng hộ (Donate)', slug: 'getting-started/activation-donation' },
+						{ label: 'Cài đặt ngôn ngữ', slug: 'getting-started/language' },
+						{ label: 'Nhật ký thay đổi (Changelog)', slug: 'getting-started/changelog' },
+					],
+				},
+				{
 					label: '1. Dashboard',
 					items: [
-						{ label: 'Tổng quan về HyperLis', slug: 'dashboard/overview' },
-						{ label: 'Cài đặt & Xác thực', slug: 'dashboard/installation-activation' },
 						{ label: 'Giao diện Dashboard', slug: 'dashboard/dashboard' },
-						{ label: 'Chính sách an toàn', slug: 'dashboard/safety-policy' },
-						{ label: 'Câu hỏi thường gặp (FAQ)', slug: 'dashboard/faq' },
-						{ label: 'Về HyperLis & Tác giả', slug: 'dashboard/about-hyperlis' },
-						{ label: 'Kích hoạt & Ủng hộ (Donate)', slug: 'dashboard/activation-donation' },
-						{ label: 'Cài đặt ngôn ngữ', slug: 'dashboard/language' },
-						{ label: 'Nhật ký thay đổi (Changelog)', slug: 'dashboard/changelog' },
 					],
 				},
 				{
 					label: '2. Chung',
 					items: [
-						{ label: 'Tối ưu hóa hiệu suất', slug: 'general/optimize-performance' },
-						{ label: 'Tắt báo cáo lỗi (Error Reporting)', slug: 'general/error-reporting' },
-						{ label: 'Tắt SmartScreen', slug: 'general/smartscreen' },
-						{ label: 'Tắt tối ưu hóa toàn màn hình', slug: 'general/fullscreen-optimizations' },
-						{ label: 'Tắt máy in & Fax', slug: 'general/print-fax-service' },
-						{ label: 'Tắt phím trợ năng (Sticky Keys)', slug: 'general/sticky-keys' },
-						{ label: 'Tối ưu ổ đĩa & NTFS', slug: 'general/disk-drives' },
-						{ label: 'Quyền riêng tư & Tác vụ theo dõi', slug: 'general/privacy-telemetry' },
-						{ label: 'Tắt theo dõi từ ứng dụng (App Telemetry)', slug: 'general/app-telemetry' },
+						{ label: 'Hệ thống', slug: 'general/system' },
+						{ label: 'Ứng dụng', slug: 'general/apps' },
+						{ label: 'Quyền riêng tư', slug: 'general/privacy' },
+						{ label: 'Ổ đĩa', slug: 'general/disk-drives' },
 					],
 				},
 				{
 					label: '3. Windows',
 					items: [
-						{ label: 'Hệ thống & Quyền riêng tư', slug: 'windows/system-privacy' },
-						{ label: 'Chơi game & Chế độ nguồn', slug: 'windows/gaming-optimizations' },
+						{ label: 'Hệ thống', slug: 'windows/system' },
+						{ label: 'Quyền riêng tư', slug: 'windows/privacy' },
+						{ label: 'Chơi game', slug: 'windows/gaming' },
+						{ label: 'Chế độ nguồn', slug: 'windows/power-plan' },
 						{ label: 'Cập nhật Windows (Windows Update)', slug: 'windows/windows-update' },
-						{ label: 'Thanh tác vụ & Tinh chỉnh mở rộng', slug: 'windows/taskbar-extras' },
+						{ label: 'Thanh tác vụ', slug: 'windows/taskbar' },
 						{ label: 'Quản lý AI trên trình duyệt', slug: 'windows/browser-ai' },
+						{ label: 'Mở rộng', slug: 'windows/extras' },
+						{ label: 'Tinh chỉnh nâng cao', slug: 'windows/advanced-tweaking' },
 					],
 				},
 				{
 					label: '4. Ứng dụng UWP',
 					items: [
-						{ label: 'Gỡ bỏ ứng dụng - Safe Preset', slug: 'uwp-apps/safe-preset' },
-						{ label: 'Tùy chỉnh & Gỡ bỏ nâng cao', slug: 'uwp-apps/aggressive-customize' },
-						{ label: 'Quản lý gói UWP Packages', slug: 'uwp-apps/packages' },
-						{ label: 'Quản lý Windows Capabilities', slug: 'uwp-apps/capabilities' },
-						{ label: 'Tính năng tùy chọn Optional Features', slug: 'uwp-apps/optional-features' },
-						{ label: 'Nhật ký thực thi PowerShell / Log', slug: 'uwp-apps/powershell-terminal-log' },
+						{ label: 'Ứng dụng UWP', slug: 'uwp-apps/uwp-apps' },
 					],
 				},
 				{
 					label: '5. Khởi chạy',
 					items: [
-						{ label: 'Quản lý ứng dụng khởi chạy', slug: 'startup-apps/startup-management' },
-						{ label: 'Sao lưu cấu hình (Backup)', slug: 'startup-apps/backup' },
-						{ label: 'Khôi phục cấu hình (Restore)', slug: 'startup-apps/restore' },
+						{ label: 'Khởi chạy', slug: 'startup-apps/startup-apps' },
 					],
 				},
 				{
 					label: '6. Tải xuống',
 					items: [
-						{ label: 'Tổng quan phân hệ Tải xuống', slug: 'downloads/downloads-overview' },
-						{ label: 'Cài đặt Runtimes & Thư viện bổ trợ', slug: 'downloads/runtimes' },
-						{ label: 'Phần mềm thiết yếu & Tiện ích', slug: 'downloads/essential-apps' },
+						{ label: 'Tải xuống', slug: 'download/download' },
 					],
 				},
 				{
 					label: '7. Dọn dẹp',
 					items: [
-						{ label: 'Windows & Bộ nhớ RAM', slug: 'cleanup/windows-ram' },
-						{ label: 'Dọn dẹp trình duyệt', slug: 'cleanup/browser-cleaning' },
-						{ label: 'Phương thức dọn dẹp', slug: 'cleanup/cleaning-methods' },
-						{ label: 'Dọn rác với Disk Cleanup', slug: 'cleanup/disk-cleanup' },
-						{ label: 'Tối ưu hóa ổ đĩa (TRIM / Defrag)', slug: 'cleanup/optimize-drives' },
+						{ label: 'Dọn dẹp', slug: 'cleaning/cleaning' },
 					],
 				},
 				{
@@ -135,25 +126,25 @@ export default defineConfig({
 				{
 					label: '9. USB Boot',
 					items: [
-						{ label: 'Tạo USB Boot cài Windows', slug: 'usb-boot/usb-boot' },
+						{ label: 'USB Boot', slug: 'usb-boot/usb-boot' },
 					],
 				},
 				{
 					label: '10. Phần cứng',
 					items: [
-						{ label: 'Thông tin phần cứng & Sức khỏe', slug: 'hardware/hardware-info' },
+						{ label: 'Phần cứng', slug: 'hardware-info/hardware-info' },
 					],
 				},
 				{
 					label: '11. QL Bản quyền',
 					items: [
-						{ label: 'Quản lý bản quyền (License Management)', slug: 'license/license-management' },
+						{ label: 'Quản lý bản quyền', slug: 'manage-license/manage-license' },
 					],
 				},
 				{
-					label: '12. Đổi phiên bản (Convert SKUs)',
+					label: '12. Đổi phiên bản',
 					items: [
-						{ label: 'Chuyển đổi phiên bản Windows (Convert SKUs)', slug: 'convert-skus/convert-skus' },
+						{ label: 'Đổi phiên bản Windows', slug: 'convert-skus/convert-skus' },
 					],
 				},
 				{
@@ -165,7 +156,7 @@ export default defineConfig({
 				{
 					label: '14. Tính năng khác',
 					items: [
-						{ label: 'Tiện ích hệ thống mở rộng', slug: 'extend-features/system-utilities' },
+						{ label: 'Tính năng khác', slug: 'extend-features/extend-features' },
 					],
 				},
 				{
@@ -175,21 +166,16 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '16. Sửa lỗi máy in',
+					label: '16. Sửa lỗi',
 					items: [
-						{ label: 'Sửa lỗi máy in qua mạng LAN', slug: 'printer-repair/printer-errors' },
+						{ label: 'Sửa lỗi máy in', slug: 'errors/printer-errors' },
+						{ label: 'Sửa lỗi Windows', slug: 'errors/windows-errors' },
 					],
 				},
 				{
-					label: '17. Sửa lỗi Windows',
+					label: '17. Cài đặt',
 					items: [
-						{ label: 'Sửa lỗi Windows & Quét SFC/DISM', slug: 'windows-repair/fix-windows-errors' },
-					],
-				},
-				{
-					label: '18. Demo',
-					items: [
-						{ label: 'Hướng dẫn tính năng Demo', slug: 'demo/demo' },
+						{ label: 'Cài đặt', slug: 'settings/settings' },
 					],
 				},
 			],

@@ -591,7 +591,13 @@ body:has(.hero-landing-wrapper) .sl-markdown-content,
 :root:has(.hero-landing-wrapper) .content-panel > footer,
 body:has(.hero-landing-wrapper) .content-panel > footer,
 :root:has(.hero-landing-wrapper) .pagination-links,
-body:has(.hero-landing-wrapper) .pagination-links {
+body:has(.hero-landing-wrapper) .pagination-links,
+[data-template='splash'] footer.sl-flex,
+[data-template='splash'] .content-panel > footer,
+body:has(.landing-custom-footer) footer.sl-flex,
+:root:has(.landing-custom-footer) footer.sl-flex,
+body:has(.wu-hero) footer.sl-flex,
+:root:has(.wu-hero) footer.sl-flex {
   display: none !important;
 }
 

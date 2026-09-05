@@ -18,6 +18,52 @@ if (fs.existsSync(oldLicenseFile)) {
   console.log('Migrated license-management.mdx from extend-features -> license');
 }
 
+// Clean obsolete general docs if migrating to hdsd-md structure
+const obsoleteGeneralFiles = [
+  'app-telemetry.mdx', 'error-reporting.mdx', 'fullscreen-optimizations.mdx',
+  'optimize-performance.mdx', 'print-fax-service.mdx', 'privacy-telemetry.mdx',
+  'smartscreen.mdx', 'sticky-keys.mdx'
+];
+obsoleteGeneralFiles.forEach(f => {
+  const p = path.join(docsBaseDir, 'general', f);
+  if (fs.existsSync(p)) {
+    try {
+      fs.unlinkSync(p);
+      console.log(`Cleaned obsolete general doc: ${f}`);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+});
+
+// Clean obsolete doc files across other tabs
+const obsoleteDocFiles = [
+  { folder: 'windows', file: 'gaming-optimizations.mdx' },
+  { folder: 'windows', file: 'system-privacy.mdx' },
+  { folder: 'windows', file: 'taskbar-extras.mdx' },
+  { folder: 'uwp-apps', file: 'safe-preset.mdx' },
+  { folder: 'uwp-apps', file: 'aggressive-customize.mdx' },
+  { folder: 'uwp-apps', file: 'packages.mdx' },
+  { folder: 'uwp-apps', file: 'capabilities.mdx' },
+  { folder: 'uwp-apps', file: 'optional-features.mdx' },
+  { folder: 'uwp-apps', file: 'powershell-terminal-log.mdx' },
+  { folder: 'startup-apps', file: 'startup-management.mdx' },
+  { folder: 'startup-apps', file: 'backup.mdx' },
+  { folder: 'startup-apps', file: 'restore.mdx' },
+  { folder: 'extend-features', file: 'system-utilities.mdx' },
+];
+obsoleteDocFiles.forEach(({ folder, file }) => {
+  const p = path.join(docsBaseDir, folder, file);
+  if (fs.existsSync(p)) {
+    try {
+      fs.unlinkSync(p);
+      console.log(`Cleaned obsolete doc file: ${folder}/${file}`);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+});
+
 // Migrate overview to dashboard if exists
 const oldOverviewDocDir = path.join(docsBaseDir, 'overview');
 const newDashboardDocDir = path.join(docsBaseDir, 'dashboard');
@@ -48,31 +94,96 @@ if (fs.existsSync(oldOverviewImgDir)) {
   console.log('Migrated images overview -> dashboard');
 }
 
+// Migrate getting-started files from dashboard to getting-started
+const gettingStartedFiles = [
+  'about-hyperlis.mdx', 'activation-donation.mdx', 'changelog.mdx',
+  'faq.mdx', 'installation.mdx', 'language.mdx',
+  'overview.mdx', 'safety-policy.mdx'
+];
+const gettingStartedDir = path.join(docsBaseDir, 'getting-started');
+if (!fs.existsSync(gettingStartedDir)) {
+  fs.mkdirSync(gettingStartedDir, { recursive: true });
+}
+gettingStartedFiles.forEach(file => {
+  const oldPath = path.join(docsBaseDir, 'dashboard', file);
+  const newPath = path.join(gettingStartedDir, file);
+  if (fs.existsSync(oldPath)) {
+    fs.copyFileSync(oldPath, newPath);
+    fs.unlinkSync(oldPath);
+    console.log(`Moved ${file} from dashboard -> getting-started`);
+  }
+});
+
+// Migrate installation-activation.mdx to installation.mdx if exists
+const oldInstallFile = path.join(gettingStartedDir, 'installation-activation.mdx');
+const newInstallFile = path.join(gettingStartedDir, 'installation.mdx');
+if (fs.existsSync(oldInstallFile)) {
+  fs.copyFileSync(oldInstallFile, newInstallFile);
+  fs.unlinkSync(oldInstallFile);
+  console.log('Renamed installation-activation.mdx -> installation.mdx');
+}
+
+// Sync images from old directory names to new directory names
+const imgSyncMap = [
+  { from: 'dashboard', to: 'getting-started' },
+  { from: 'downloads', to: 'download' },
+  { from: 'cleanup', to: 'cleaning' },
+  { from: 'hardware', to: 'hardware-info' },
+  { from: 'license', to: 'manage-license' },
+  { from: 'printer-repair', to: 'errors' },
+  { from: 'windows-repair', to: 'errors' },
+];
+
+imgSyncMap.forEach(({ from, to }) => {
+  const fromDir = path.join(imagesBaseDir, from);
+  const toDir = path.join(imagesBaseDir, to);
+  if (fs.existsSync(fromDir)) {
+    if (!fs.existsSync(toDir)) fs.mkdirSync(toDir, { recursive: true });
+    const files = fs.readdirSync(fromDir);
+    files.forEach(file => {
+      const srcFile = path.join(fromDir, file);
+      const destFile = path.join(toDir, file);
+      if (!fs.existsSync(destFile) && fs.statSync(srcFile).isFile()) {
+        fs.copyFileSync(srcFile, destFile);
+        console.log(`Synced image ${from}/${file} -> ${to}/${file}`);
+      }
+    });
+  }
+});
+
 const tabConfigs = {
+  'getting-started': { name: 'Bắt đầu', img: 'dashboard-01.png' },
   'dashboard': { name: 'Dashboard', img: 'dashboard-01.png' },
   'general': { name: 'Chung (General)', img: 'general-01.png' },
   'windows': { name: 'Windows', img: 'windows-01.png' },
   'uwp-apps': { name: 'Ứng dụng UWP (UWP Apps)', img: 'uwp-apps-01.png' },
   'startup-apps': { name: 'Khởi chạy (Startup Apps)', img: 'startup-apps-01.png' },
-  'downloads': { name: 'Tải xuống (Downloads)', img: 'downloads-01.png' },
-  'cleanup': { name: 'Dọn dẹp (Cleanup)', img: 'cleanup-01.png' },
+  'download': { name: 'Tải xuống (Downloads)', img: 'downloads-01.png' },
+  'cleaning': { name: 'Dọn dẹp (Cleanup)', img: 'cleanup-01.png' },
   'network': { name: 'Mạng (Network)', img: 'network-01.png' },
   'usb-boot': { name: 'USB Boot', img: 'usb-boot-01.png' },
-  'hardware': { name: 'Phần cứng (Hardware)', img: 'hardware-01.png' },
-  'license': { name: 'QL Bản quyền (Manage License)', img: 'license-01.png' },
+  'hardware-info': { name: 'Phần cứng (Hardware)', img: 'hardware-01.png' },
+  'manage-license': { name: 'QL Bản quyền (Manage License)', img: 'license-01.png' },
   'convert-skus': { name: 'Đổi phiên bản (Convert SKUs)', img: 'convert-skus-01.png' },
   'office-setup': { name: 'Cài đặt Office (Office Setup)', img: 'office-setup-01.png' },
   'extend-features': { name: 'Tính năng khác (Extend Features)', img: 'extend-features-01.png' },
   'wsap': { name: 'WSAP', img: 'wsap-01.png' },
-  'printer-repair': { name: 'Sửa lỗi máy in (Printer Errors)', img: 'printer-repair-01.png' },
-  'windows-repair': { name: 'Sửa lỗi Windows (Fix Windows Error)', img: 'windows-repair-01.png' },
-  'demo': { name: 'Demo', img: 'demo-01.png' }
+  'errors': { name: 'Sửa lỗi (Errors)', img: 'printer-repair-01.png' },
+  'settings': { name: 'Cài đặt (Settings)', img: 'settings-01.png' }
 };
 
-const validTabs = Object.keys(tabConfigs);
+const validDocTabs = Object.keys(tabConfigs);
+
+const preserveImgFolders = [
+  'getting-started', 'dashboard', 'general', 'windows', 'uwp-apps', 'startup-apps',
+  'download', 'downloads', 'cleaning', 'cleanup', 'network',
+  'usb-boot', 'hardware-info', 'hardware', 'manage-license', 'license',
+  'convert-skus', 'office-setup', 'extend-features', 'wsap',
+  'errors', 'printer-repair', 'windows-repair', 'settings'
+];
 
 // 1. Ensure all valid image folders exist in public/images/hyperlis/
-validTabs.forEach(folder => {
+preserveImgFolders.forEach(folder => {
   const imgFolder = path.join(imagesBaseDir, folder);
   if (!fs.existsSync(imgFolder)) {
     fs.mkdirSync(imgFolder, { recursive: true });
@@ -83,12 +194,11 @@ validTabs.forEach(folder => {
   }
 });
 
-
 // 2. Remove unused / obsolete folders in docsBaseDir
 if (fs.existsSync(docsBaseDir)) {
   const existingDocsFolders = fs.readdirSync(docsBaseDir, { withFileTypes: true });
   existingDocsFolders.forEach(item => {
-    if (item.isDirectory() && !validTabs.includes(item.name)) {
+    if (item.isDirectory() && !validDocTabs.includes(item.name)) {
       const unusedFolder = path.join(docsBaseDir, item.name);
       fs.rmSync(unusedFolder, { recursive: true, force: true });
       console.log(`Cleaned unused docs folder: ${item.name}`);
@@ -100,7 +210,7 @@ if (fs.existsSync(docsBaseDir)) {
 if (fs.existsSync(imagesBaseDir)) {
   const existingImgFolders = fs.readdirSync(imagesBaseDir, { withFileTypes: true });
   existingImgFolders.forEach(item => {
-    if (item.isDirectory() && !validTabs.includes(item.name)) {
+    if (item.isDirectory() && !preserveImgFolders.includes(item.name)) {
       const unusedFolder = path.join(imagesBaseDir, item.name);
       fs.rmSync(unusedFolder, { recursive: true, force: true });
       console.log(`Cleaned unused image folder: ${item.name}`);
@@ -120,7 +230,7 @@ function stripEmojisAndNumbers(text) {
 }
 
 // 4. Process each doc file
-validTabs.forEach(folder => {
+validDocTabs.forEach(folder => {
   const tabInfo = tabConfigs[folder];
   const folderPath = path.join(docsBaseDir, folder);
   if (!fs.existsSync(folderPath)) return;
@@ -152,7 +262,7 @@ validTabs.forEach(folder => {
     let body = content.substring(frontmatterMatch[0].length);
 
     // Extract imports
-    const importLines = [];
+    let importLines = [];
     const nonImportLines = [];
     const lines = body.split(/\r?\n/);
     let insideImportBlock = true;
@@ -172,10 +282,15 @@ validTabs.forEach(folder => {
       }
     }
 
-    // Ensure Screenshot is imported
+    const noScreenshotFiles = ['faq.mdx', 'safety-policy.mdx'];
+    const isNoScreenshot = noScreenshotFiles.includes(file);
+
+    // Ensure Screenshot is imported if needed
     const hasScreenshotImport = importLines.some(l => l.includes('Screenshot'));
-    if (!hasScreenshotImport) {
+    if (!isNoScreenshot && !hasScreenshotImport) {
       importLines.push("import Screenshot from '../../../components/Screenshot.astro';");
+    } else if (isNoScreenshot && hasScreenshotImport) {
+      importLines = importLines.filter(l => !l.includes('Screenshot'));
     }
 
     let restOfDoc = nonImportLines.join('\n');
@@ -225,22 +340,39 @@ validTabs.forEach(folder => {
     let newBody = '';
     newBody += importLines.join('\n') + '\n\n';
 
-    // Section 1: 1. Hình ảnh giao diện
-    newBody += `## 1. Hình ảnh giao diện\n\n`;
+    let sectionIndex = 1;
 
-    if (availableImages.length > 0) {
-      availableImages.forEach((imgName, idx) => {
-        const imagePath = `/images/hyperlis/${folder}/${imgName}`;
-        const altSuffix = availableImages.length > 1 ? ` - Ảnh ${idx + 1}` : '';
-        newBody += `<Screenshot \n  src="${imagePath}" \n  alt="Giao diện tab ${tabInfo.name}${altSuffix}"\n/>\n\n`;
-      });
-    } else {
-      const imagePath = `/images/hyperlis/${folder}/${tabInfo.img}`;
-      newBody += `<Screenshot \n  src="${imagePath}" \n  alt="Giao diện tab ${tabInfo.name}"\n/>\n\n`;
+    if (!isNoScreenshot) {
+      // Section 1: 1. Hình ảnh giao diện
+      newBody += `## 1. Hình ảnh giao diện\n\n`;
+
+      if (folder === 'getting-started' && file === 'language.mdx') {
+        newBody += `<Screenshot \n  src="/images/hyperlis/settings/settings-01.png" \n  alt="Giao diện tab Cài đặt Ngôn ngữ"\n/>\n\n`;
+      } else {
+        let pageImages = [...availableImages];
+        if (folder === 'errors') {
+          if (file.includes('printer')) {
+            pageImages = availableImages.filter(img => img.includes('printer'));
+          } else if (file.includes('windows')) {
+            pageImages = availableImages.filter(img => img.includes('windows'));
+          }
+        }
+
+        if (pageImages.length > 0) {
+          pageImages.forEach((imgName, idx) => {
+            const imagePath = `/images/hyperlis/${folder}/${imgName}`;
+            const altSuffix = pageImages.length > 1 ? ` - Ảnh ${idx + 1}` : '';
+            newBody += `<Screenshot \n  src="${imagePath}" \n  alt="Giao diện tab ${tabInfo.name}${altSuffix}"\n/>\n\n`;
+          });
+        } else {
+          const imagePath = `/images/hyperlis/${folder}/${tabInfo.img}`;
+          newBody += `<Screenshot \n  src="${imagePath}" \n  alt="Giao diện tab ${tabInfo.name}"\n/>\n\n`;
+        }
+      }
+      sectionIndex = 2;
     }
 
-    // Renumber remaining sections starting from 2
-    let sectionIndex = 2;
+    // Renumber remaining sections starting from sectionIndex
     for (let item of cleanedSections) {
       if (item.isHeading) {
         newBody += `## ${sectionIndex}. ${item.heading}\n\n`;

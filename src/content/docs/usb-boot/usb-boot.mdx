@@ -1,9 +1,9 @@
 ---
-title: Tạo bộ cài & Cứu hộ hệ thống (USB Boot)
-description: Hướng dẫn tạo USB Boot chuẩn UEFI/Legacy, tải ISO gốc từ Fido, bản Win tối ưu sẵn và phím tắt Restart to BIOS.
+title: USB Boot
+description: Tạo USB Multi-Boot đa năng chứa nhiều bộ cài Windows, WinPE cứu hộ và các công cụ quản lý USB Boot.
 ---
 
-import { Steps, Aside } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
 import Screenshot from '../../../components/Screenshot.astro';
 
 ## 1. Hình ảnh giao diện
@@ -13,53 +13,38 @@ import Screenshot from '../../../components/Screenshot.astro';
   alt="Giao diện tab USB Boot"
 />
 
-## 2. Tổng quan về phân hệ
+## 2. Quy trình tạo USB Boot tự động
 
-Tab **USB Boot** là một công cụ mạnh mẽ dành riêng cho việc tạo các thiết bị khởi động (*Bootable USB*) một cách nhanh chóng và chuẩn xác. Thay vì phải sử dụng các phần mềm bên thứ ba phức tạp, HyperLis tích hợp sẵn toàn bộ quy trình đóng gói bộ cài Windows và quản lý tệp tin ISO tối ưu nhất cho người dùng.
+* **Bước 1: Chọn USB / Ổ đĩa của bạn**:
+  * Hệ thống tự động liệt kê toàn bộ các thiết bị lưu trữ di động (USB Flash Drive, ổ cứng gắn ngoài) kèm theo tên thiết bị và dung lượng cụ thể.
+  * Nút **Quét Lại Ổ Đĩa**: Quét lại danh sách nếu HyperLis không nhận diện được USB/Ổ cứng ngoài vừa cắm vào.
+* **Bước 2: Chọn File ISO**:
+  * **Chọn phiên bản Windows**: Tải trực tiếp các bản Windows được tối ưu sẵn từ HyperLis (sẽ được cập nhật sau (～￣▽￣)～).
+  * **Chọn File ISO Cục Bộ**: Nếu đã có sẵn file ISO trên máy, bạn chỉ cần nhấn nút **Chọn file** để trỏ đường dẫn tới file `.iso` cần dùng.
+* **Bước 3: Bắt đầu tạo USB Boot**:
+  * Nhấn vào nút **Bắt đầu** để tiến hành cài đặt USB Boot.
+  * Hệ thống sẽ hiển thị hộp thoại cảnh báo xác nhận xóa dữ liệu (Format) trên ổ USB đã chọn để đảm bảo an toàn.
+  * Tự động tải file ISO về máy (nếu chọn tải trực tuyến).
+  * Tự động cài đặt Ventoy phiên bản mới nhất kèm giao diện tùy chỉnh với định dạng phân vùng ExFAT.
+  * Sao chép tệp ISO vào thư mục `ISO` trên USB với thanh tiến trình phần trăm hiển thị trực quan theo thời gian thực.
 
----
+## 3. Tải ISO từ nguồn khác
 
-## 3. Các thành phần chính (Core Features)
+Nếu muốn tìm kiếm các bản cài đặt Windows khác, tính năng này cung cấp danh sách liên kết dẫn trực tiếp đến các trang chia sẻ bộ cài Windows của Microsoft từ các nguồn khác nhau:
+* **Microsoft**: Trang tải bản cài đặt Windows chính thức từ Microsoft.
+* **PITVN Community**: Kho lưu trữ Google Drive các bộ cài Windows nguyên gốc và tối ưu hóa từ cộng đồng PITVN.
+* **Massgrave**: Kho liên kết tải bộ cài Windows chính hãng (Genuine Installation Media).
+* **Anhdv Boot**: Kho ISO cài đặt hệ điều hành và công cụ cứu hộ máy tính từ Anhdv Boot.
+* **21AK22**: Chuyên trang chia sẻ các bộ cài Windows chuẩn sạch và ổn định.
+* **UUP Dump**: Tải về và đóng gói file ISO Windows cập nhật mới nhất trực tiếp từ máy chủ Microsoft.
+* **3steam, Quang Huy Blog, Fido**: Các nguồn tải ISO và công cụ script tạo bộ cài Windows tin cậy.
+* Nhấn nút **Đi thôi (Let's go)** để mở liên kết trên trình duyệt web của bạn.
 
-* **Select your USB/Drive:** Tự động liệt kê các thiết bị lưu trữ USB gắn ngoài đang kết nối, hiển thị chi tiết tên thiết bị và dung lượng thực tế (Ví dụ: `ST500LM021 - 465.8 GB`) để tránh chọn nhầm ổ đĩa.
-* **Select Windows version:** Cung cấp sẵn các phiên bản Windows đã được tối ưu hóa từ kho dữ liệu của HyperLis:
-  * Ví dụ: `Windows 10 22H2 Optimize_AutoActive` — Bản Windows đã được tinh chỉnh hiệu năng mượt mà và tự động kích hoạt bản quyền sẵn.
-* **Or select your own ISO:** Cho phép bạn tự chọn tệp tin ISO Windows có sẵn trong máy tính thông qua nút **Browse**.
-* **Get other ISO (Choose a Resource):** Trung tâm tải xuống trực tiếp các bản ISO Windows nguyên gốc từ Microsoft hoặc công cụ cứu hộ thông qua nguồn uy tín **Fido - Pbatard**.
+## 4. Các chức năng bổ trợ & Quản lý
 
----
-
-## 4. Các thao tác điều khiển (Action Buttons)
-
-* **Start:** Bắt đầu quá trình nạp bộ cài vào USB. HyperLis sẽ tự động định dạng và cấu hình phân vùng để đảm bảo USB có thể khởi động tốt trên cả 2 chuẩn **UEFI** và **Legacy (MBR/GPT)**.
-* **Restart to BIOS/UEFI:** Lối tắt cực kỳ tiện lợi giúp máy tính khởi động lại và truy cập thẳng vào giao diện cài đặt **BIOS/UEFI** mà không cần phải canh nhấn phím tắt (*F2, F12, Del*) phức tạp.
-* **Fix WMIC:** Công cụ tự động sửa lỗi *Windows Management Instrumentation* — lỗi hệ thống phổ biến khiến phần mềm không thể nhận diện được thông tin ổ đĩa và phần cứng.
-
----
-
-## 5. Lợi ích thực tế cho từng đối tượng
-
-* **Đối với IT Support & Helpdesk:**
-  * Tạo bộ cài siêu tốc, tiết kiệm thời gian chuẩn bị công cụ đi cài máy cho khách hàng.
-  * Tích hợp sẵn Driver cần thiết, giảm thiểu việc phải đi cài lại Driver thủ công.
-  * Cứu hộ chuyên nghiệp, vượt qua giới hạn phần cứng dễ dàng.
-* **Đối với Gamer & Người dùng nâng cao:**
-  * Sử dụng các bản Win sạch & tối ưu có sẵn để đạt FPS cao nhất ngay sau khi cài máy.
-  * Tự động bypass kiểm tra TPM 2.0 và Secure Boot khi cài Windows 11 trên các máy tính đời cũ.
-* **Đối với Người dùng thông thường:** Thao tác an toàn và đơn giản, không cần hiểu sâu về định dạng FAT32 hay NTFS.
-
----
-
-## 6. Hướng dẫn sử dụng
-
-<Steps>
-1. Cắm USB dung lượng tối thiểu 8GB vào máy tính.
-2. Mở HyperLis, chọn tab **USB Boot**.
-3. Tại ô **Select your USB/Drive**, chọn đúng ổ đĩa USB của bạn.
-4. Chọn phiên bản Windows có sẵn trong kho hoặc nhấp **Browse** để chọn tệp ISO từ máy.
-5. Nhấn nút **Start** để bắt đầu quá trình tạo USB Boot.
-</Steps>
-
-<Aside type="caution">
-**Lưu ý quan trọng:** Trước khi nhấn nút **Start**, hãy đảm bảo bạn đã sao lưu toàn bộ dữ liệu quan trọng trong USB sang nơi khác, vì quá trình tạo bộ cài sẽ tiến hành định dạng (Format) lại toàn bộ ổ đĩa USB.
-</Aside>
+Bộ công cụ mở rộng giúp bạn linh hoạt quản lý USB Boot theo từng nhu cầu riêng biệt:
+* **Chỉ tải file ISO**: Cho phép tải riêng file ISO từ máy chủ lưu trữ về thư mục `Download` của phần mềm mà không cần cắm USB. Sau khi tải xong, hệ thống sẽ gợi ý mở thư mục chứa file để bạn kiểm tra.
+* **Chỉ tạo Menu Boot**: Cài đặt nền tảng bootloader Ventoy và giao diện HyperLis vào USB mà không sao chép tệp ISO. Phù hợp khi bạn muốn chuẩn bị sẵn USB Boot hoặc đã có sẵn file ISO bên ngoài.
+* **Thêm ISO vào USB có sẵn**: Sao chép thêm bất kỳ file ISO Windows hoặc WinPE mới nào vào thư mục `/ISO` trên chiếc USB đã được tạo boot trước đó mà **hoàn toàn không làm mất dữ liệu** hay phải format lại USB.
+* **Vào BIOS/UEFI**: Tự động khởi động lại máy tính và chuyển thẳng vào màn hình cài đặt BIOS/UEFI của bo mạch chủ, giúp bạn không cần phải canh nhấn phím tắt (F2, F12, Del...) lúc mở máy.
+* **Sửa lỗi WMIC**: Tự động kích hoạt lại công cụ Windows Management Instrumentation Command-line (WMIC) vốn bị tắt mặc định trên Windows 11 24H2 trở lên, giúp phần mềm nhận diện chính xác danh sách ổ đĩa.
