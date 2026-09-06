@@ -52,7 +52,7 @@ export default defineConfig({
 					label: 'Bắt đầu',
 					items: [
 						{ label: 'Tổng quan về HyperLis', slug: 'getting-started/overview' },
-						{ label: 'Cài đặt HyperLis', slug: 'getting-started/installation' },
+						{ label: 'Tải & cài đặt HyperLis', slug: 'getting-started/installation' },
 						{ label: 'Lưu ý sử dụng HyperLis', slug: 'getting-started/safety-policy' },
 						{ label: 'Câu hỏi thường gặp (FAQ)', slug: 'getting-started/faq' },
 						{ label: 'Về HyperLis & Tác giả', slug: 'getting-started/about-hyperlis' },
@@ -62,13 +62,13 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '1. Dashboard',
+					label: 'Dashboard',
 					items: [
 						{ label: 'Giao diện Dashboard', slug: 'dashboard/dashboard' },
 					],
 				},
 				{
-					label: '2. Chung',
+					label: 'Chung',
 					items: [
 						{ label: 'Hệ thống', slug: 'general/system' },
 						{ label: 'Ứng dụng', slug: 'general/apps' },
@@ -77,7 +77,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '3. Windows',
+					label: 'Windows',
 					items: [
 						{ label: 'Hệ thống', slug: 'windows/system' },
 						{ label: 'Quyền riêng tư', slug: 'windows/privacy' },
@@ -91,31 +91,31 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '4. Ứng dụng UWP',
+					label: 'Ứng dụng UWP',
 					items: [
 						{ label: 'Ứng dụng UWP', slug: 'uwp-apps/uwp-apps' },
 					],
 				},
 				{
-					label: '5. Khởi chạy',
+					label: 'Khởi chạy',
 					items: [
 						{ label: 'Khởi chạy', slug: 'startup-apps/startup-apps' },
 					],
 				},
 				{
-					label: '6. Tải xuống',
+					label: 'Tải xuống',
 					items: [
 						{ label: 'Tải xuống', slug: 'download/download' },
 					],
 				},
 				{
-					label: '7. Dọn dẹp',
+					label: 'Dọn dẹp',
 					items: [
 						{ label: 'Dọn dẹp', slug: 'cleaning/cleaning' },
 					],
 				},
 				{
-					label: '8. Mạng',
+					label: 'Mạng',
 					items: [
 						{ label: 'Thông tin card mạng (NIC)', slug: 'network/network-information' },
 						{ label: 'Đổi DNS & Quản lý DNS', slug: 'network/dns-management' },
@@ -124,56 +124,56 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '9. USB Boot',
+					label: 'USB Boot',
 					items: [
 						{ label: 'USB Boot', slug: 'usb-boot/usb-boot' },
 					],
 				},
 				{
-					label: '10. Phần cứng',
+					label: 'Phần cứng',
 					items: [
 						{ label: 'Phần cứng', slug: 'hardware-info/hardware-info' },
 					],
 				},
 				{
-					label: '11. QL Bản quyền',
+					label: 'Quản lý bản quyền',
 					items: [
 						{ label: 'Quản lý bản quyền', slug: 'manage-license/manage-license' },
 					],
 				},
 				{
-					label: '12. Đổi phiên bản',
+					label: 'Đổi phiên bản',
 					items: [
 						{ label: 'Đổi phiên bản Windows', slug: 'convert-skus/convert-skus' },
 					],
 				},
 				{
-					label: '13. Cài đặt Office',
+					label: 'Cài đặt Office',
 					items: [
 						{ label: 'Cài đặt Microsoft Office', slug: 'office-setup/office-setup' },
 					],
 				},
 				{
-					label: '14. Tính năng khác',
+					label: 'Tính năng khác',
 					items: [
 						{ label: 'Tính năng khác', slug: 'extend-features/extend-features' },
 					],
 				},
 				{
-					label: '15. WSAP',
+					label: 'WSAP',
 					items: [
 						{ label: 'Cài đặt Windows tự động (WSAP)', slug: 'wsap/wsap' },
 					],
 				},
 				{
-					label: '16. Sửa lỗi',
+					label: 'Sửa lỗi',
 					items: [
 						{ label: 'Sửa lỗi máy in', slug: 'errors/printer-errors' },
 						{ label: 'Sửa lỗi Windows', slug: 'errors/windows-errors' },
 					],
 				},
 				{
-					label: '17. Cài đặt',
+					label: 'Cài đặt',
 					items: [
 						{ label: 'Cài đặt', slug: 'settings/settings' },
 					],

@@ -64,6 +64,17 @@ obsoleteDocFiles.forEach(({ folder, file }) => {
   }
 });
 
+// Clean 404.md if 404.mdx exists
+const old404Md = path.join(docsBaseDir, '404.md');
+if (fs.existsSync(old404Md) && fs.existsSync(path.join(docsBaseDir, '404.mdx'))) {
+  try {
+    fs.unlinkSync(old404Md);
+    console.log('Removed obsolete 404.md in favor of 404.mdx');
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 // Migrate overview to dashboard if exists
 const oldOverviewDocDir = path.join(docsBaseDir, 'overview');
 const newDashboardDocDir = path.join(docsBaseDir, 'dashboard');
@@ -179,7 +190,7 @@ const preserveImgFolders = [
   'download', 'downloads', 'cleaning', 'cleanup', 'network',
   'usb-boot', 'hardware-info', 'hardware', 'manage-license', 'license',
   'convert-skus', 'office-setup', 'extend-features', 'wsap',
-  'errors', 'printer-repair', 'windows-repair', 'settings'
+  'errors', 'printer-repair', 'windows-repair', 'settings', '404'
 ];
 
 // 1. Ensure all valid image folders exist in public/images/hyperlis/

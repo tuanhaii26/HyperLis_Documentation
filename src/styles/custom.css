@@ -92,29 +92,86 @@ header.header {
   gap: 0.5rem;
 }
 
-/* Sidebar Styling */
+/* Sidebar Styling - Astro Starlight Official Theme */
 nav.sidebar {
   border-right: 1px solid var(--sl-color-hairline);
   background-color: var(--sl-color-bg-sidebar);
 }
 
 .sidebar-pane {
-  padding-top: 1.5rem;
-  padding-bottom: 2rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
-.sidebar-content .top-level > li {
-  margin-top: 1.25rem;
+.sidebar-content .top-level>li {
+  margin-top: 0.65rem;
 }
 
-.sidebar-content summary,
+.sidebar-content .top-level>li:first-child {
+  margin-top: 0.25rem;
+}
+
+.sidebar-content summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0.375rem;
+  transition: background-color 0.15s ease;
+}
+
+.sidebar-content summary:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+:root:not([data-theme='dark']) .sidebar-content summary:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
 .sidebar-content .group-label {
-  font-size: 0.8125rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  text-transform: none !important;
+}
+
+.sidebar-content .group-label span.large,
+.sidebar-content summary .large {
+  font-size: 0.95rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: none !important;
+  letter-spacing: -0.01em;
+  color: var(--sl-color-white);
+  line-height: 1.4;
+}
+
+.sidebar-content summary .caret {
   color: var(--sl-color-gray-3);
-  margin-bottom: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.sidebar-content details[open]>summary .caret {
+  transform: rotateZ(90deg);
+}
+
+/* Nested sublist & vertical guide line */
+.sidebar-content ul ul {
+  margin-top: 0.35rem;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-content ul ul li {
+  margin-inline-start: 0.5rem;
+  border-inline-start: 1px solid var(--sl-color-hairline);
+  padding-inline-start: 0.5rem;
+}
+
+:root[data-theme='dark'] .sidebar-content ul ul li {
+  border-inline-start: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-content a {
@@ -123,8 +180,14 @@ nav.sidebar {
   padding: 0.35rem 0.75rem;
   border-radius: 0.375rem;
   color: var(--sl-color-gray-3);
+  text-decoration: none;
   transition: all 0.15s ease-in-out;
   display: block;
+  line-height: 1.4;
+}
+
+:root[data-theme='dark'] .sidebar-content a {
+  color: var(--sl-color-gray-2);
 }
 
 .sidebar-content a:hover {
@@ -132,15 +195,22 @@ nav.sidebar {
   background-color: var(--sl-color-gray-7);
 }
 
+:root[data-theme='dark'] .sidebar-content a:hover {
+  color: var(--sl-color-white);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Active Page Pill - Restored Hyper Blue Palette */
 .sidebar-content a[aria-current='page'] {
-  color: var(--sl-color-accent);
-  background-color: var(--sl-color-accent-low);
+  color: var(--sl-color-accent) !important;
+  background-color: var(--sl-color-accent-low) !important;
   font-weight: 600;
 }
 
 :root[data-theme='dark'] .sidebar-content a[aria-current='page'] {
-  color: #38bdf8;
-  background-color: rgba(56, 189, 248, 0.12);
+  color: #38bdf8 !important;
+  background-color: rgba(56, 189, 248, 0.12) !important;
+  font-weight: 600;
 }
 
 /* Content Area & Typography */
@@ -246,12 +316,14 @@ nav.sidebar {
 /* Generous Left & Right Margin Padding from Table Edges */
 .sl-markdown-content th:first-child,
 .sl-markdown-content td:first-child {
-  padding-left: 1.65rem !important; /* Khoảng cách rộng rãi từ rìa trái bảng tới cột đầu tiên */
+  padding-left: 1.65rem !important;
+  /* Khoảng cách rộng rãi từ rìa trái bảng tới cột đầu tiên */
 }
 
 .sl-markdown-content th:last-child,
 .sl-markdown-content td:last-child {
-  padding-right: 1.65rem !important; /* Khoảng cách rộng rãi từ cột cuối cùng tới rìa phải bảng */
+  padding-right: 1.65rem !important;
+  /* Khoảng cách rộng rãi từ cột cuối cùng tới rìa phải bảng */
 }
 
 /* Data Cells (td) */
@@ -455,7 +527,8 @@ nav.sidebar {
   margin: 1.5rem 0;
 }
 
-.hl-before-card, .hl-after-card {
+.hl-before-card,
+.hl-after-card {
   padding: 1.25rem;
   border-radius: 0.5rem;
   border: 1px solid var(--sl-color-hairline);
@@ -525,13 +598,21 @@ starlight-toc a[aria-current='true'] {
   font-weight: 600;
 }
 
-/* Landing / Splash Page Full-Width Reset & Remove Top Default Title */
+/* Landing / Splash / 404 Full-Width Reset & Remove Top Default Title */
 :root:has(.hero-landing-wrapper) .main-frame,
 body:has(.hero-landing-wrapper) .main-frame,
+:root:has(.not-found-wrapper) .main-frame,
+body:has(.not-found-wrapper) .main-frame,
 :root:has(.hero-landing-wrapper) .main-pane,
 body:has(.hero-landing-wrapper) .main-pane,
+:root:has(.not-found-wrapper) .main-pane,
+body:has(.not-found-wrapper) .main-pane,
+:root:has(.not-found-wrapper) main,
+body:has(.not-found-wrapper) main,
 :root:has(.hero-landing-wrapper) .lg\:sl-flex,
 body:has(.hero-landing-wrapper) .lg\:sl-flex,
+:root:has(.not-found-wrapper) .lg\:sl-flex,
+body:has(.not-found-wrapper) .lg\:sl-flex,
 [data-template='splash'] .main-frame,
 [data-has-hero] .main-frame {
   max-width: 100% !important;
@@ -542,6 +623,8 @@ body:has(.hero-landing-wrapper) .lg\:sl-flex,
 
 :root:has(.hero-landing-wrapper) .content-panel,
 body:has(.hero-landing-wrapper) .content-panel,
+:root:has(.not-found-wrapper) .content-panel,
+body:has(.not-found-wrapper) .content-panel,
 [data-template='splash'] .content-panel,
 [data-has-hero] .content-panel {
   padding: 0 !important;
@@ -551,25 +634,28 @@ body:has(.hero-landing-wrapper) .content-panel,
   width: 100% !important;
 }
 
-/* Hide default Starlight H1 title and its empty top container */
+/* Hide default Starlight H1 title and default hero on splash pages (landing and 404) */
+[data-template='splash'] .content-panel:first-child,
+[data-template='splash'] h1#_top,
 :root:has(.hero-landing-wrapper) .content-panel:first-child,
 body:has(.hero-landing-wrapper) .content-panel:first-child,
+:root:has(.not-found-wrapper) .content-panel:first-child,
+body:has(.not-found-wrapper) .content-panel:first-child,
 :root:has(.hero-landing-wrapper) h1#_top,
 body:has(.hero-landing-wrapper) h1#_top,
-[data-template='splash'] .content-panel:first-child,
-[data-has-hero] .content-panel:first-child {
-  display: none !important;
-}
-
+:root:has(.not-found-wrapper) h1#_top,
+body:has(.not-found-wrapper) h1#_top,
 :root:has(.hero-landing-wrapper) .hero,
 body:has(.hero-landing-wrapper) .hero,
-[data-template='splash'] .hero,
-[data-has-hero] .hero {
+:root:has(.not-found-wrapper) .hero,
+body:has(.not-found-wrapper) .hero {
   display: none !important;
 }
 
 :root:has(.hero-landing-wrapper) .sl-container,
 body:has(.hero-landing-wrapper) .sl-container,
+:root:has(.not-found-wrapper) .sl-container,
+body:has(.not-found-wrapper) .sl-container,
 [data-template='splash'] .sl-container,
 [data-has-hero] .sl-container {
   max-width: 100% !important;
@@ -580,6 +666,8 @@ body:has(.hero-landing-wrapper) .sl-container,
 
 :root:has(.hero-landing-wrapper) .sl-markdown-content,
 body:has(.hero-landing-wrapper) .sl-markdown-content,
+:root:has(.not-found-wrapper) .sl-markdown-content,
+body:has(.not-found-wrapper) .sl-markdown-content,
 [data-template='splash'] .sl-markdown-content,
 [data-has-hero] .sl-markdown-content {
   max-width: 100% !important;
@@ -588,12 +676,16 @@ body:has(.hero-landing-wrapper) .sl-markdown-content,
   margin: 0 !important;
 }
 
-:root:has(.hero-landing-wrapper) .content-panel > footer,
-body:has(.hero-landing-wrapper) .content-panel > footer,
+:root:has(.hero-landing-wrapper) .content-panel>footer,
+body:has(.hero-landing-wrapper) .content-panel>footer,
+:root:has(.not-found-wrapper) footer,
+body:has(.not-found-wrapper) footer,
 :root:has(.hero-landing-wrapper) .pagination-links,
 body:has(.hero-landing-wrapper) .pagination-links,
+:root:has(.not-found-wrapper) .pagination-links,
+body:has(.not-found-wrapper) .pagination-links,
 [data-template='splash'] footer.sl-flex,
-[data-template='splash'] .content-panel > footer,
+[data-template='splash'] .content-panel>footer,
 body:has(.landing-custom-footer) footer.sl-flex,
 :root:has(.landing-custom-footer) footer.sl-flex,
 body:has(.wu-hero) footer.sl-flex,
@@ -601,7 +693,11 @@ body:has(.wu-hero) footer.sl-flex,
   display: none !important;
 }
 
-
-
-
-
+@media (min-width: 861px) {
+  html:has(.not-found-wrapper),
+  body:has(.not-found-wrapper) {
+    overflow: hidden !important;
+    height: 100% !important;
+    max-height: 100vh !important;
+  }
+}

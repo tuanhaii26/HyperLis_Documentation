@@ -44,13 +44,15 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
 
     <!-- Right Media (Clean Real Image Showcase) -->
     <div class="wu-hero-media">
-      <img 
-        src={`${baseUrl}/images/hyperlis/dashboard/dashboard-01.png`} 
-        alt="Giao diện phần mềm HyperLis" 
-        loading="eager" 
-        class="wu-hero-img"
-        onerror={`if (this.src !== '${baseUrl}/images/hyperlis/placeholder.svg') { this.src = '${baseUrl}/images/hyperlis/placeholder.svg'; }`}
-      />
+      <div class="wu-hero-img-frame">
+        <img 
+          src={`${baseUrl}/images/hyperlis/dashboard/dashboard-01.png`} 
+          alt="Giao diện phần mềm HyperLis" 
+          loading="eager" 
+          class="wu-hero-img"
+          onerror={`if (this.src !== '${baseUrl}/images/hyperlis/placeholder.svg') { this.src = '${baseUrl}/images/hyperlis/placeholder.svg'; }`}
+        />
+      </div>
     </div>
   </div>
 </section>
@@ -70,36 +72,40 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   :global(body:not([data-has-sidebar]) .sl-container),
   :global(body:not([data-has-sidebar]) .sl-markdown-content),
   :global(body:has(.wu-hero) .main-pane),
+  :global(body:has(.wu-hero) main),
   :global(body:has(.wu-hero) .content-panel),
   :global(body:has(.wu-hero) .sl-container),
   :global(body:has(.wu-hero) .sl-markdown-content) {
     max-width: 100% !important;
     width: 100% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
   }
 
   :global(body:not([data-has-sidebar]) .pagination-links),
   :global(body:has(.wu-hero) .pagination-links),
-  :global(.content-panel > footer.sl-flex) {
+  :global(body:has(.wu-hero) .content-panel > footer.sl-flex),
+  :global(body:has(.wu-hero) .sl-container > footer.sl-flex) {
     display: none !important;
   }
 
-  /* Base Hero Section */
+  /* Base Hero Section: Phủ kín 100% viewport từ thanh topbar xuống sát đáy màn hình */
   .wu-hero {
     position: relative;
-    min-height: calc(100vh - 4rem);
+    min-height: calc(100vh + 25px);
+    min-height: calc(100dvh + 25px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem 2rem;
+    padding: 2rem 2rem 3.5rem;
     overflow: hidden;
     width: 100%;
-    margin: 0;
+    margin-top: -25px; /* Dịch chuyển sát mép dưới topbar */
     box-sizing: border-box;
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    background-color: var(--wu-hero-bg);
+    border-bottom: 1px solid var(--wu-border);
   }
 
   /* Light Theme */
@@ -135,11 +141,6 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
     --wu-img-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 35px rgba(14, 165, 233, 0.12);
   }
 
-  .wu-hero {
-    background-color: var(--wu-hero-bg);
-    border-bottom: 1px solid var(--wu-border);
-  }
-
   /* Caro Grid Background */
   .wu-hero-grid {
     position: absolute;
@@ -153,11 +154,11 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
 
   .wu-hero-glow {
     position: absolute;
-    top: 15%;
+    top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    width: 950px;
-    height: 550px;
+    width: 1000px;
+    height: 650px;
     background: var(--wu-glow);
     filter: blur(70px);
     pointer-events: none;
@@ -169,7 +170,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
     width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.15fr;
+    grid-template-columns: 1.05fr 1fr;
     gap: 3.5rem;
     align-items: center;
     position: relative;
@@ -179,18 +180,18 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   @media (max-width: 1100px) {
     .wu-hero-inner {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2.5rem;
       text-align: center;
     }
   }
 
   /* Left Copy */
   .wu-brand-header {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
   }
 
   .wu-brand-title {
-    font-size: clamp(2.75rem, 5.5vw + 1rem, 4.5rem);
+    font-size: clamp(2.25rem, 4.5vw, 3.85rem);
     font-weight: 900;
     line-height: 1.05;
     letter-spacing: -0.04em;
@@ -199,12 +200,12 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   }
 
   .wu-hero-title {
-    font-size: clamp(1.85rem, 3vw + 0.8rem, 2.75rem);
+    font-size: clamp(1.45rem, 2.35vw, 2.25rem);
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.18;
     letter-spacing: -0.02em;
     color: var(--wu-title-color);
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.85rem;
   }
 
   .gradient-text {
@@ -214,11 +215,11 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   }
 
   .wu-hero-tagline {
-    font-size: 1.05rem;
-    line-height: 1.65;
+    font-size: 0.95rem;
+    line-height: 1.55;
     color: var(--wu-desc-color);
-    margin-bottom: 2rem;
-    max-width: 560px;
+    margin-bottom: 1.35rem;
+    max-width: 530px;
   }
 
   @media (max-width: 1100px) {
@@ -232,8 +233,8 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   .wu-hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
   }
 
   @media (max-width: 1100px) {
@@ -246,8 +247,8 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.45rem;
-    font-size: 0.95rem;
+    padding: 0.72rem 1.4rem;
+    font-size: 0.92rem;
     font-weight: 600;
     border-radius: 0.5rem;
     text-decoration: none !important;
@@ -288,33 +289,59 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   }
 
   .wu-hero-caption {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--wu-desc-color);
     opacity: 0.85;
     margin: 0;
   }
 
-  /* Right Media (Clean Real Image Showcase) */
+  /* Right Media: Căn giữa theo chiều dọc và mở rộng vừa khít placeholder bo tròn */
   .wu-hero-media {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     position: relative;
+  }
+
+  .wu-hero-img-frame {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--wu-border);
+    box-shadow: var(--wu-img-shadow);
+    background-color: var(--wu-btn-sec-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .wu-hero-img-frame:hover {
+    transform: translateY(-3px);
   }
 
   .wu-hero-img {
     width: 100%;
     height: auto;
-    max-height: 520px;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
     border-radius: 0.75rem;
-    border: 1px solid var(--wu-border);
-    box-shadow: var(--wu-img-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .wu-hero-img:hover {
-    transform: translateY(-3px);
+  @media (max-width: 1100px) {
+    .wu-hero {
+      min-height: auto;
+      padding: 3rem 1.5rem;
+      margin-top: 0;
+    }
+
+    .wu-hero-img-frame {
+      max-width: 520px;
+      margin: 0 auto;
+    }
   }
 </style>
