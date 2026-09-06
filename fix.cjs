@@ -18,6 +18,18 @@ if (fs.existsSync(oldLicenseFile)) {
   console.log('Migrated license-management.mdx from extend-features -> license');
 }
 
+// Clean obsolete uwu route/components if switching to query param
+const uwuDocFile = path.join(docsBaseDir, 'uwu.mdx');
+if (fs.existsSync(uwuDocFile)) {
+  fs.unlinkSync(uwuDocFile);
+  console.log('Cleaned obsolete uwu.mdx');
+}
+const uwuComponentsDir = path.join(__dirname, 'src', 'components', 'uwu');
+if (fs.existsSync(uwuComponentsDir)) {
+  fs.rmSync(uwuComponentsDir, { recursive: true, force: true });
+  console.log('Cleaned obsolete src/components/uwu');
+}
+
 // Clean obsolete general docs if migrating to hdsd-md structure
 const obsoleteGeneralFiles = [
   'app-telemetry.mdx', 'error-reporting.mdx', 'fullscreen-optimizations.mdx',

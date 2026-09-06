@@ -35,6 +35,7 @@ export default defineConfig({
 				{ tag: 'link', attrs: { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/HyperLis_Documentation/favicon-32x32.png' } },
 				{ tag: 'link', attrs: { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/HyperLis_Documentation/favicon-16x16.png' } },
 				{ tag: 'link', attrs: { rel: 'apple-touch-icon', sizes: '180x180', href: '/HyperLis_Documentation/apple-touch-icon.png' } },
+				{ tag: 'script', attrs: { src: '/HyperLis_Documentation/uwu.js', defer: true } },
 			],
 			customCss: [
 				'@fontsource/inter/400.css',
